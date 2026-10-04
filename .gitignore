@@ -1,0 +1,17 @@
+.DS_Store
+
+# KiCad
+*-backups/
+_autosave-*
+*.kicad_prl
+*.lck
+fp-info-cache
+~*
+
+# Node / FluidCAD
+node_modules/
+
+# Firmware builds
+firmware/build/
+firmware/.pio/
+firmware/sdkconfig.old

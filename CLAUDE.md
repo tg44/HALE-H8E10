@@ -1,0 +1,63 @@
+# HALE H8E10
+
+Open-hardware USB-MIDI pad controller: 8 hall-effect keys, 10 push
+encoders, 1.54" display, 20 RGB LEDs, Seeed XIAO ESP32S3 Plus. Pre-hardware:
+nothing ordered, no KiCad project yet, no firmware yet.
+
+## How to work here
+
+The owner is learning electronics with this project. It is AI-assisted, not
+AI-generated, and the README says so publicly.
+
+- Explain the why behind every EE suggestion (what the part does, what
+  breaks without it), briefly. Don't just hand over a result.
+- The owner draws the schematic and layout in KiCad. Don't generate or
+  bulk-edit `.kicad_sch` / `.kicad_pcb` files unless asked; review, check
+  and advise instead.
+- Part facts (pinouts, package dimensions, ratings, LCSC numbers) come from
+  the datasheet, not from memory. If a datasheet isn't in
+  `hardware/libs/datasheets/` or wasn't looked up, say the value is
+  unverified.
+- Say so plainly when a choice in the docs looks wrong.
+
+## Fixed decisions (docs/decisions.md has the reasons)
+
+- Hall/magnetic switches only (Gateron KS-20 + SS39ET). No mechanical or
+  hot-swap switches anywhere.
+- All soldered parts on the bottom, including the XIAO. Top: switches,
+  encoders, display socket only.
+- v0 is fully hand-soldered by a professional. No fab assembly, no
+  pick-and-place constraints.
+- No bench test. The v0 board is the test.
+- 1.2 mm 2-layer board, no steel near the sensors.
+
+## Workflow
+
+`docs/plan.md` is the source of truth. Three parallel tracks:
+
+- A. collect + build: per part group — symbol + footprint + 3D model +
+  datasheet → schematic → placed on the board → fit check. Schematic and
+  layout grow together; a group can be placed before the nets it depends
+  on exist.
+- B. case and 3D models in FluidCAD, checked against the board STEP after
+  every placed group.
+- C. firmware.
+
+## Docs
+
+- `docs/decisions.md` — append a new `D<n>` entry when a decision changes;
+  don't rewrite old ones (history starts with the first commit).
+- `docs/pinout.md`, `docs/bom.md`, `docs/pcb-notes.md` describe the current
+  design; keep them in sync with each other when one changes.
+- Tick the checkboxes in `docs/plan.md` as steps are done.
+
+## Tools
+
+- KiCad 10. `kicad-cli` is not on PATH:
+  `/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli`
+  (ERC/DRC: `sch erc`, `pcb drc`; board model: `pcb export step`).
+- FluidCAD in `case/` (`*.part.js`, `*.assembly.js`; `npx fluidcad serve`,
+  `npx fluidcad export step|stl|png`). It has an MCP server:
+  `claude mcp add --scope user FluidCAD -- npx -y fluidcad mcp`.
+- Project-local libraries only (`hardware/libs/`); LCSC parts via
+  `easyeda2kicad`.
