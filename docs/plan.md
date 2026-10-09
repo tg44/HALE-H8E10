@@ -28,7 +28,7 @@ are placed with their LEDs before the LED power/data section exists.
 ### A0. Project setup
 
 - [ ] KiCad project `hardware/kicad/h8e10`, project-local lib tables
-- [ ] board setup: 2-layer, 1.2 mm, fab's design rules
+- [ ] board setup: 2-layer, 1.6 mm, fab's design rules
 - [ ] rough outline and origin; key grid 19.05 mm
 - [ ] STEP export working (`kicad-cli pcb export step`)
 
@@ -36,14 +36,28 @@ are placed with their LEDs before the LED power/data section exists.
 
 - [ ] symbol with all 20 GPIO, footprint with the half-pitch castellations,
       3D model
+- [ ] **double-check the XIAO footprint** against Seeed's
+      `datasheets/mcu/seeed-xiao-esp32s3-plus-bottom.dxf` and the pinout sheet
+      (`…-pinout.xlsx`): castellation pitch, half-pitch pads, pin 1
+      orientation when flipped to the bottom
 - [ ] placed on the **bottom**, USB-C at a board edge
 - [ ] power labels: 5V, 3V3 (XIAO), GND
 
 ### A2. Key cell ×8
 
-- [ ] KS-20 footprint (MX pattern, no electrical pads) + 3D model
-- [ ] SS39ET (SOT-23) + 100 nF + 1 kΩ, sensor position from a reference
-      design (D12)
+- [ ] KS-20 footprint + 3D model
+- [ ] **double-check the KS-20 footprint** against the Gateron drawing
+      (`hardware/libs/datasheets/switch/gateron-ks-20-…pdf` p.5, "Layout of
+      PCB"): two Ø1.70 mm peg holes at ±5.08 mm, **no Ø4 mm centre
+      hole** (that's where the sensor goes), no electrical pads
+- [ ] peg clearance on B.Cu: pegs stick out ~1.1 mm below a 1.6 mm board;
+      nothing soldered on top of them, case floor clear
+- [ ] DRV5055A3 (SOT-23) + 100 nF + 1 kΩ, sensor position from a reference
+      design (D12, D15)
+- [ ] **double-check the sensor footprint** against both datasheets: TI
+      DBZ land pattern (DRV5055 p.30) and SS39ET fig. 4 — feet of both
+      parts must land on the pads; pin 1 VCC, 2 OUT, 3 GND; package
+      centre on the switch axis (pcb-notes, per-key cell)
 - [ ] SK6812MINI-E(A) + 100 nF, cutout at the LED window
 - [ ] one cell grouped, checked, then copied ×8 in 2×4
 
@@ -57,11 +71,18 @@ are placed with their LEDs before the LED power/data section exists.
 ### A4. Display
 
 - [ ] 8-pin socket + 4 × M2 holes (27 × 38.7 mm), module 3D model
+- [ ] **double-check the socket position together** against the drawing
+      (`hardware/libs/datasheets/display/display-1.54-front.png`) and a real module with calipers:
+      pin row centre 1.5 from the module top edge = **1.0 above the top
+      hole centres**, pins centred (±8.89), pin 1 GND on the left from the
+      front, pin holes Ø0.9
 - [ ] outline and active area on Dwgs.User for the case window
 
 ### A5. ADC + analog rail
 
 - [ ] MCP3208, VREF on the filtered rail, 1 µF at VREF
+- [ ] **double-check the MCP3208 footprint** (SOIC-16) and pin 1 against
+      `datasheets/adc/microchip-mcp3208.pdf`
 - [ ] ferrite + 10 µF + 100 nF → `3V3A`
 - [ ] 100 nF at each ADC input (other half of the sensor RC)
 - [ ] sensor nets from A2 connected
@@ -94,9 +115,15 @@ are placed with their LEDs before the LED power/data section exists.
 
 ## Track B — mechanical (parallel to A)
 
-- [ ] FluidCAD project in `case/`
+- [x] FluidCAD project in `case/`
 - [ ] reference models: keycap, knob, display module, XIAO (STEP imports
       where they exist, simple blocks where they don't)
+  - [x] display module: `case/ref/display-154.part.js` (drawn)
+  - [x] KS-20: `case/ref/ks20.part.js` (drawn) + Gateron STEP in
+        `hardware/libs/3dmodels/`
+  - [x] XIAO, PEC11R, EC11E: STEP in `hardware/libs/3dmodels/` (see
+        SOURCES.md; orientations differ, check before use)
+  - [ ] keycap, knob
 - [ ] board STEP from KiCad imported; re-import after every placed group
 - [ ] plate: switch cutouts, encoder holes, display window
 - [ ] tray: USB-C opening, BOOT/RESET access, antenna spot, standoffs,
@@ -127,8 +154,11 @@ Needs the board (doubles as bring-up, in this order):
 
 ## Order and assembly
 
-- [ ] PCBs: 5 × bare, 2-layer, 1.2 mm
-- [ ] parts per bom.md, with spares of the small stuff
+- [ ] PCBs: 5 × bare, 2-layer, 1.6 mm
+- [ ] re-check every LCSC number in bom.md against its part and stock
+      (C22412 was wrong once; stock moves daily)
+- [ ] parts per bom.md, with spares of the small stuff, incl. 3–4
+      DRV5055A4 as clip spares
 - [ ] interactive BOM (iBom) for the person soldering
 - [ ] assembly: bottom SMD → XIAO → encoders and display socket on top
 - [ ] power rails checked before first USB plug-in to a computer

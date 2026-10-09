@@ -2,8 +2,9 @@
 
 ## Stack and sides
 
-- 2-layer, **1.2 mm** FR4 (keeps the magnet close to the sensor through the
-  board)
+- 2-layer, **1.6 mm** FR4 (D14: the KS-20 magnet is strong; the extra
+  0.4 mm keeps the sensor out of clipping at bottom-out. 1.6 mm is also
+  what the open hall boards use, D15)
 - Bottom (B.Cu): everything that is soldered flat — sensors, LEDs, ICs,
   passives **and the XIAO**. All SMD work happens on one side.
 - Top (F.Cu): only what the user touches — hall switches, encoders,
@@ -17,12 +18,26 @@ Three separate footprints, placed once and copied as a KiCad **group**
 (Ctrl+G); do not merge them into one footprint — each part needs its own
 designator.
 
-- KS-20 switch footprint (MX pattern: centre post + two pegs, no
-  electrical pads), 19.05 mm pitch. The switch has nothing to solder; the
-  plate holds it.
-- `SOT-23` sensor on B.Cu under the magnet, position taken from a
-  reference design (D12). Flip the footprint with F — KiCad mirrors the
-  pads; don't mirror anything by hand.
+- KS-20 switch footprint: two Ø1.70 mm peg holes at ±5.08 mm, **no
+  centre post hole** — the centre is where the sensor sits (KS-20 drawing,
+  "Layout of PCB"). Don't use a stock MX footprint; its Ø4 mm centre hole
+  would cut the sensor pads. 19.05 mm pitch. The switch has nothing to
+  solder; the plate (1.5 mm, 14.00 mm cutout) holds it, the pegs only
+  locate it. Pegs reach ~2.7 mm below the housing, ~1.1 mm through a
+  1.6 mm board: keep bottom parts clear of them.
+- Hall sensor (DRV5055A3, D15) on B.Cu under the magnet, position taken
+  from a reference design (D12). Flip the footprint with F — KiCad mirrors
+  the pads; don't mirror anything by hand.
+  - **Footprint: TI's DBZ land pattern** (DRV5055 datasheet p.30: 3 pads
+    1.3 × 0.6 mm, rows 2.1 mm apart centre to centre, 0.95 mm pitch). Not
+    a tight stock SOT-23: it has to hold both the DRV5055 (TO-236 body,
+    lead span 2.10–2.64 mm) and the wider SS39ET (body 1.60 mm, lead span
+    2.80 mm), so either part — or the DRV5055A4 spare — can be fitted per
+    key at assembly time. Feet land on the pads for both (pads reach
+    ±0.4…±1.7 mm from centre; feet end at ±1.05…1.32 and ±1.4 mm).
+  - Pinout on all three: 1 VCC, 2 OUT, 3 GND.
+  - Hall element: 0.65 ± 0.08 mm deep, centred ± 50 µm (DRV5055); the
+    package centre goes on the switch axis.
 - `LED_SK6812MINI-E_3.2x2.8mm_P1.5mm` on B.Cu with its Edge.Cuts cutout at
   the switch LED window (the stock KiCad footprint is drawn LED-down;
   check the pad order against the datasheet)
@@ -41,7 +56,10 @@ designator.
   Brass or nylon standoffs; FR4/acrylic/printed plate.
 - Per-key calibration at boot absorbs fixed offsets from neighbours, and
   the sign of the swing — magnet polarity doesn't need to be known up
-  front.
+  front. That's why the sensor is bipolar (DRV5055, rests at VCC/2): a
+  unipolar part (DRV5056) would read nothing if the pole is the other way
+  round, and HE60 reports the DRV5055A3 as inverted with Gateron switches
+  (D15).
 
 ## Analog
 
@@ -81,12 +99,13 @@ designator.
 
 ## Display
 
-- 8-pin socket on top; four M2 holes at 27 × 38.7 mm; see display.md.
+- 8-pin socket on top; four M2 holes at 27 × 38.7 mm; see `hardware/libs/datasheets/display/display.md`.
 
 ## Hand assembly
 
 - Use the `_HandSolder` 0603 footprints (longer pads). SOT-23, SOIC and
-  SSOP as stock.
+  SSOP as stock — except the hall sensor, which uses the TI DBZ land
+  pattern (see Per-key cell).
 - Bottom silkscreen is the assembly drawing: every designator readable,
   pin-1 marks, LED orientation mark, electrolytic polarity.
 - Generate an interactive BOM (InteractiveHtmlBom plugin) and hand it over

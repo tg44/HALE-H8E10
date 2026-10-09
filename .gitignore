@@ -10,6 +10,7 @@ fp-info-cache
 
 # Node / FluidCAD
 node_modules/
+case/.fluidcad/
 
 # Firmware builds
 firmware/build/

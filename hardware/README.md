@@ -2,7 +2,9 @@
 
 - `kicad/` — KiCad 10 project `h8e10.kicad_pro`
 - `libs/` — project-local symbols (`h8e10.kicad_sym`), footprints
-  (`h8e10.pretty/`), 3D models (`3d/`), datasheets (`datasheets/`). Every
+  (`h8e10.pretty/`), 3D models (`3dmodels/`, sources in its SOURCES.md), datasheets
+  (`datasheets/<group>/`: adc, display, encoder, hall, io-expander, led,
+  mcu, power, switch). Every
   part used on the board gets all of them here, so the project opens
   without any globally installed library.
 

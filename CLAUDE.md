@@ -19,17 +19,22 @@ AI-generated, and the README says so publicly.
   `hardware/libs/datasheets/` or wasn't looked up, say the value is
   unverified.
 - Say so plainly when a choice in the docs looks wrong.
+- Before advising on a design decision, read `docs/plan.md` and the docs it
+  touches (`decisions.md`, `pinout.md`, `bom.md`, `pcb-notes.md`). Advice
+  has to start from what's already decided — e.g. the hall sensors go to an
+  external MCP3208 (D5), not the ESP32's own ADC; reasoning about the
+  wrong ADC once cost a round of corrections.
 
 ## Fixed decisions (docs/decisions.md has the reasons)
 
-- Hall/magnetic switches only (Gateron KS-20 + SS39ET). No mechanical or
+- Hall/magnetic switches only (Gateron KS-20 + DRV5055A3, D15). No mechanical or
   hot-swap switches anywhere.
 - All soldered parts on the bottom, including the XIAO. Top: switches,
   encoders, display socket only.
 - v0 is fully hand-soldered by a professional. No fab assembly, no
   pick-and-place constraints.
 - No bench test. The v0 board is the test.
-- 1.2 mm 2-layer board, no steel near the sensors.
+- 1.6 mm 2-layer board (D14), no steel near the sensors.
 
 ## Workflow
 
@@ -49,6 +54,10 @@ AI-generated, and the README says so publicly.
   don't rewrite old ones (history starts with the first commit).
 - `docs/pinout.md`, `docs/bom.md`, `docs/pcb-notes.md` describe the current
   design; keep them in sync with each other when one changes.
+- Datasheets live in `hardware/libs/datasheets/<group>/` (adc, display,
+  encoder, hall, io-expander, led, mcu, power, switch); notes about one
+  part sit next to them (e.g. `display/display.md`). 3D models are in
+  `hardware/libs/3dmodels/`, sources in its `SOURCES.md`.
 - Tick the checkboxes in `docs/plan.md` as steps are done.
 
 ## Tools

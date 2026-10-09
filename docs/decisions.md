@@ -120,3 +120,52 @@ one starts, and the case is modelled alongside. Mechanical fit is the
 tightest constraint on this board (key pitch, knob clearance, display
 height, XIAO under the board), so it gets checked from the first placed
 part instead of after routing. See docs/plan.md.
+
+## D14. Board thickness 1.6 mm, not 1.2 mm
+
+Replaces the 1.2 mm in D10 and pcb-notes. 1.2 mm was chosen to bring the
+sensor closer to the magnet, assuming the signal would be weak. The
+datasheets (now in hardware/libs/datasheets/) say the opposite:
+
+- KS-20: 102 ± 15 G at rest, 905 ± 80 G at bottom-out, magnet face
+  0.3 mm above the PCB top at bottom-out. The drawing shows a standard
+  ~1.6 mm PCB, so 905 G is most likely measured through 1.6 mm.
+- SS39ET at 3.3 V: ~0.9 mV/G typical (0.27 mV/G/V nominal, up to
+  ~0.35), output limited to ~0.95–1.05 V from either rail, so it clips at
+  roughly 520–780 G. Even at 5 V the guaranteed range is only ±650 G.
+
+So the sensor clips over the last part of the travel at 1.6 mm already;
+1.2 mm would add roughly 10–40 % more field (dipole estimate) and clip
+earlier. 1.6 mm costs nothing and keeps more of the travel linear.
+Velocity (two thresholds high in the travel) is unaffected by clipping;
+aftertouch range near bottom-out is what's at stake. Still the D12
+accepted risk; the remaining fix is a lower-sensitivity sensor (open).
+
+## D15. Sensor: TI DRV5055A3 (replaces D3's SS39ET)
+
+DRV5055A3QDBZR (LCSC C266128), SOT-23, on the 3.3 V analog rail. Datasheet
+(TI SBAS640C) at 3.3 V: 15 mV/mT, guaranteed linear range ±88 mT, output
+linear to 0.2 V from either rail, VCC/2 at rest. That is ~1.7× the SS39ET's
+signal and ~2.5× its room before clipping, in the same pinout.
+
+- Proven setup: KBHE 75HE uses DRV5055A3 at 3.3 V on a 1.6 mm board; HE60
+  lists it (and SS39ET) as working with Gateron magnetic switches. Every
+  open hall board checked runs its sensors at 3.3 V.
+- The field under a 1.6 mm board is probably below Gateron's 905 G: TI app
+  note SLYA093 models ~2.1 mm magnet-to-sensor at bottom-out and picks a
+  ±80 mT part. So D14's clipping estimate was pessimistic; the SS39ET is
+  borderline rather than clearly clipping. Inference, not measured.
+- Bipolar on purpose. DRV5056 (unipolar, 2× the swing) was rejected: it
+  reads only one pole, and HE60 reports DRV5055A3 as "inverted" with
+  Gateron switches, so the pole at the sensor isn't certain. With no bench
+  test (D12), a wrong guess would mean eight dead keys. DRV5055 swings
+  either way; calibration flips the sign.
+- Fallback for clipping: DRV5055A4 (7.5 mV/mT, ±176 mT, C266123), same
+  footprint, swap per key. SS39ET (C126669) also fits the same footprint.
+- Pinout identical on all three: 1 VCC, 2 OUT, 3 GND. Package bodies
+  differ (SS39ET 1.60 × 2.80 mm lead span, DRV5055 TO-236 1.2–1.4 ×
+  2.10–2.64 mm), so the footprint uses TI's DBZ land pattern, which holds
+  both (see pcb-notes).
+
+Ratiometric still holds: sensors and MCP3208 VREF share the 3.3 V analog
+rail (D5).

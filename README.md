@@ -13,7 +13,7 @@ key, and an Ableton/DJ mode flip for the knobs."
 
 ## What it is
 
-- 8 hall-effect keys (Gateron KS-20 magnetic switches, SS39ET sensors) with
+- 8 hall-effect keys (Gateron KS-20 magnetic switches, DRV5055A3 sensors) with
   per-key velocity, aftertouch and rapid-trigger style actuation
 - 10 detented push-encoders in two rows; a row reads `[browse][hi][mid][lo][mix]`
   in "DJ" mode and ten macro knobs in "Ableton" mode
@@ -69,7 +69,7 @@ case/           plate, case and knob models (FluidCAD)
 - [docs/bom.md](docs/bom.md) — bill of materials with LCSC numbers and sources
 - [docs/pinout.md](docs/pinout.md) — MCU pin budget and bus assignments
 - [docs/pcb-notes.md](docs/pcb-notes.md) — layout and assembly rules
-- [docs/display.md](docs/display.md) — the 1.54" ST7789 module, mechanical
+- [display.md](hardware/libs/datasheets/display/display.md) — the 1.54" ST7789 module, mechanical
 
 ## License
 

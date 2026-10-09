@@ -3,7 +3,8 @@
 Tray + plate, 3D printed for v0. Plate: FR4 or printed, no steel.
 Modelled in [FluidCAD](https://github.com/Fluid-CAD/FluidCAD) (parametric
 CAD written as JavaScript), alongside the board — track B in
-[docs/plan.md](../docs/plan.md). Not started.
+[docs/plan.md](../docs/plan.md). Reference models are in `ref/`;
+downloaded STEP models in `../hardware/libs/3dmodels/`.
 
 ## Setup
 
@@ -23,7 +24,7 @@ Parts are `*.part.js`, assemblies `*.assembly.js`.
 - case → print: `npx fluidcad export stl`
 - reference parts (keycap, knob, display module, XIAO): STEP where a model
   exists, a dimensioned block where it doesn't. Display dimensions are in
-  docs/display.md.
+  hardware/libs/datasheets/display/display.md.
 
 ## Things the case must do
 
