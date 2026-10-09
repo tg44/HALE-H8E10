@@ -1,6 +1,6 @@
 // 1.54" 240×240 ST7789 module ("1.54TFT-SPI-ST7789 Ver:1.1", NOMEN_TEC V2.0
 // family), reference model for fit checks. Outline from the seller drawing
-// in hardware/libs/datasheets/display/ (see display.md there); silkscreen,
+// in hardware/libs/datasheets/display/1.54/ (see display.md there); silkscreen,
 // pads and back-side parts from the product photo in the same folder — part
 // positions are approximate (±0.5 mm).
 //

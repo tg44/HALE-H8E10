@@ -20,7 +20,7 @@ small.
 | FB1 | 1 | ferrite 600 Ω@100 MHz 0603 | C1002 | analog rail |
 | C* | ~60 | 100 nF 50 V X7R 0603 | C14663 | decoupling, RC filters |
 | C* | ~20 | 1 nF 50 V 0603 | C1588 | encoder debounce |
-| C* | ~6 | 10 µF 25 V 0805 | C15850 | LDO in/out, rails |
+| C* | ~7 | 10 µF 25 V 0805 | C15850 | LDO in/out, rails, display header 5 V |
 | C* | 1 | 1 µF 0603 | C15849 | MCP3208 VREF |
 | C* | 1–2 | 220 µF 10 V electrolytic | — | LED rail bulk |
 | R* | 8 | 1 kΩ 0603 | 0603WAF1001T5E | sensor output series |
@@ -34,11 +34,11 @@ small.
 |---|---|---|---|
 | 8 | Gateron KS-20 magnetic switch (not soldered) | keyboard shop (Candykeys, AliExpress) | $5–8 |
 | 8 | keycaps | keyboard shop | $2–6 |
-| 10 | Bourns PEC11R-4215F-S0024 (LCSC C143790) or Alps EC11E light-detent, 24/24, D-shaft (no Alps part number picked yet) | LCSC / TME / Mouser | $10–15 |
+| 10 | Bourns PEC11R-4215F-S0024, 24/24, 15 mm D-shaft, push (D17; M7 nut + washer included) | LCSC C143790 / TME / Mouser | $10–15 |
 | 10 | knobs, 6 mm D-shaft | AliExpress | $3–5 |
-| 1 | 1.54" 240×240 ST7789 IPS module, 8-pin (NOMEN_TEC V2.0 family) | AliExpress | $4–6 |
-| 1 | 1×8 female header 2.54 mm | any | — |
-| 4+ | M2 standoffs/screws (brass or nylon) | — | — |
+| 1 | 2.79" 428×142 NV3007 bar module, 8-pin (TZT "2.79TFT-SPI", D16); male header comes with it, soldered into the main PCB | [AliExpress 1005012658981762](https://www.aliexpress.com/item/1005012658981762.html) | HUF 1,544 (~$4) |
+| 2 | M2 spacers 3.0 mm + screws under the display (brass or nylon) | — | — |
+| 4+ | M2 screws/standoffs for board and case (brass or nylon) | — | — |
 
 ## Fab
 

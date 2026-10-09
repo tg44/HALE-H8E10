@@ -8,7 +8,7 @@ Final pin numbers get fixed during plan step A9; this records the budget.
 | Bus | Signals | Devices |
 |---|---|---|
 | SPI A | SCK, MOSI, MISO, CS_ADC | MCP3208 (≤ 1 MHz clock at 3.3 V) |
-| SPI B | SCK, MOSI, CS_LCD, DC_LCD, RST_LCD | ST7789 (40–80 MHz) |
+| SPI B | SCK, MOSI, CS_LCD, DC_LCD, RST_LCD | NV3007 2.79" bar (D16; write ≤ 100 MHz per datasheet, so the S3's 80 MHz is fine; read ≤ 6.6 MHz). Module VDD on 5 V; its pins are 3.3 V logic |
 | I2C | SDA, SCL (+ 4.7 kΩ pull-ups) | MCP23017 ×2 |
 | GPIO | INT_EXP | MCP23017 INTA/INTB wired-OR (open-drain, pull-up) |
 | GPIO | LED_DATA | → 74AHCT1G125 → SK6812 chain |
@@ -27,7 +27,7 @@ Plus). The ADC at ≤ 1 MHz can sit on any pins through the GPIO matrix.
 
 If forced onto the 11 full-pitch pins: merge the SPIs (SCK, MOSI, MISO,
 CS_ADC, CS_LCD, DC_LCD = 6) + I2C 2 + INT 1 + LED 1 = 10, with RST tied to
-EN via RC and BL tied high. Possible only because the 1.54" module has CS.
+EN via RC and BL tied high. Possible only because the display module has CS (the 2.79" and the 1.54" both do).
 
 ## Expander map
 

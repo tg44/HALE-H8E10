@@ -169,3 +169,76 @@ signal and ~2.5× its room before clipping, in the same pinout.
 
 Ratiometric still holds: sensors and MCP3208 VREF share the 3.3 V analog
 rail (D5).
+
+## D16. Display: 2.79" 428×142 NV3007 bar above the keys (replaces D9's 1.54")
+
+TZT / ShengYang "2.79TFT-SPI" module, [AliExpress
+1005012658981762](https://www.aliexpress.com/item/1005012658981762.html).
+Drawings and the comparison with the other candidates:
+hardware/libs/datasheets/display/ (`2.79/`, `candidates.md`).
+
+- Why: the 1.54" module set the case height and sat in its own column
+  beside the keys; with five knobs per row the case hit the print bed
+  (256 mm) and the knob pitch was capped at 26. A wide, low bar in a strip
+  behind the keys frees that column: the case is ~222 × 83 and the knobs
+  get 27 mm. The bar is 1.8× the 1.54"'s area (64.1 × 21.3) and spans the
+  four key columns (~107 px per key label).
+- Same 8-pin order (GND VDD SCL SDA RES DC CS BL) and 4-wire SPI with CS:
+  SPI B in pinout.md stays. VDD 3–5 V with its own 3.3 V regulator; 3.3 V
+  logic; backlight 100 mA through an on-board NPN on the BL pin (counts
+  against D11's budget).
+- Controller is NV3007, not ST7789: drivers exist in Arduino_GFX
+  (`Arduino_NV3007`) and as community esp_lcd components
+  (`lz00qs/esp_lcd_nv3007`) and LVGL; not in TFT_eSPI or LovyanGFX.
+  Datasheet V1.0 in datasheets/display/: VCI 2.8–3.6 V (4.6 abs max),
+  IOVCC 1.8–3.6 V; 4-line SPI write cycle ≥ 10 ns (≤ 100 MHz), read
+  ≥ 150 ns.
+- Mounting: male header soldered straight into the main PCB, no socket.
+  The module's back-side parts (≈ 2.6, from the 6.00 max) are taller than
+  the header body (2.5), so the module sits on 2 × M2 3.0 mm spacers at its
+  two Ø2.5 holes; glass top at ~6.4 above the main PCB.
+- Power: header VDD on the **5 V** net. VDD only feeds the module's own
+  3.3 V regulator (U1), which supplies the panel and, through 3 Ω, the
+  backlight LEDs (Vf ≈ 3.2). From 5 V the backlight gets a full 3.3 V and
+  its ~100 mA (PWM) stays off our 3.3 V rail, which also feeds the hall
+  sensors (D5). From 3.3 V, U1's dropout leaves ~3.0–3.2 V and the
+  backlight runs dim. U1 dissipates ≈ (5 − 3.3) × 0.11 ≈ 0.19 W. Logic
+  pins are 3.3 V either way (panel side of U1), no level shifting.
+- Not verified with a part in hand. The 1.54" stays documented
+  (`display/1.54/`) as the fallback.
+
+## D17. Encoders bolted to the case top: Bourns PEC11R-4215F-S0024
+
+Replaces D7's "PEC11R or Alps EC11E". The printed top has a 2 mm encoder
+segment resting on the 6.5 mm encoder bodies; each M7 × 0.75 bushing goes
+through a Ø7.4 hole and is clamped with the supplied washer (0.5) and nut
+(2.0, 10 AF): 2.0 + 0.5 + 2.0 = 4.5 of the 5 mm thread. Push and twist
+forces go into the case, not the solder joints (the push switch alone is
+4–6 N per press), and the ten nuts lock the PCB to the case.
+
+- The Alps EC11E has a plain, unthreaded collar (catalogues in
+  datasheets/encoder/), so it can't be bolted; dropped.
+- PEC11R-4215F-S0024: 24 detents / 24 pulses (one pulse per click, as D7
+  assumed), 15 mm flatted shaft (tip 21.5 above the PCB, 7 mm D-flat),
+  lighter detent than the EC11E. LCSC C143790.
+- Still worth a sample before ordering ten (D7's point about feel).
+
+## D18. Panel layout and a stepped, printed top
+
+Source of truth: `case/layout.js` (every number below comes from there);
+reasoning and sources: docs/layout-references.md.
+
+- Left block: 2 × 4 keys at the front (19.05 pitch), the D16 display in a
+  strip behind them. Right block: 2 × 5 encoders, 27 mm along a row
+  (Intech EN16 ≈ 26.75); the rows line up with the front key row and the
+  display centre line.
+- Top is one printed part with two heights: the key area is the KS-20
+  plate (1.5 thick, top 5.0 above the PCB, fixed by the switch clips); the
+  display and encoder areas are flush at 8.5 (encoder bodies 6.5 + 2.0).
+  The step has a near-full 3.5 mm fillet. A pressed keycap bottoms out at
+  7.5, so the step sits outside the keycap footprint (+0.5).
+- Spacing rules in layout.js: window → back edge equals front keycap →
+  front edge (7.0); a 5.3 mm flat strip between the fillet and the window;
+  2.0 walls and floor (PLA/PETG, 0.4 nozzle).
+- The case must fit the owner's printer bed, 256 × 235 (4 mm spare for a
+  skirt); layout.js refuses to build a bigger one. Now 222.0 × 82.7.

@@ -5,7 +5,10 @@ ST7789** variant in the listing, not the 1.8" 128×160 ST7735 shown in some
 photos.
 
 Drawings from the seller's datasheet and a product photo are in this folder
-(`display-1.54-*.png`); the ST7789V controller datasheet is `sitronix-st7789v.pdf`.
+(`display-1.54-*.png`); the ST7789V controller datasheet is one level up
+(`../sitronix-st7789v.pdf`). Listing:
+[AliExpress 1005009712175802](https://www.aliexpress.com/item/1005009712175802.html).
+Alternatives for a strip above the keys: `../candidates.md`.
 
 ## Electrical
 

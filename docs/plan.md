@@ -63,19 +63,21 @@ are placed with their LEDs before the LED power/data section exists.
 
 ### A3. Encoder cell ×10
 
-- [ ] EC11-class encoder footprint + 3D model, knob model
+- [ ] PEC11R-4215F-S0024 footprint (check against the Bourns drawing) + 3D model, knob model
 - [ ] 2 × 1 nF on A/B
 - [ ] LED + 100 nF; position decided with the knob/case model
 - [ ] one cell grouped, then copied ×10 in two rows of five
 
 ### A4. Display
 
-- [ ] 8-pin socket + 4 × M2 holes (27 × 38.7 mm), module 3D model
-- [ ] **double-check the socket position together** against the drawing
-      (`hardware/libs/datasheets/display/display-1.54-front.png`) and a real module with calipers:
-      pin row centre 1.5 from the module top edge = **1.0 above the top
-      hole centres**, pins centred (±8.89), pin 1 GND on the left from the
-      front, pin holes Ø0.9
+- [ ] 2.79" bar (D16): 8 × Ø1.0 header holes + 2 × M2 spacer holes,
+      module 3D model (`case/ref/display-279.part.js`)
+- [ ] **double-check the header and spacer positions together** against
+      the drawing (`hardware/libs/datasheets/display/2.79/`) and a real
+      module with calipers: header row 1.65 from the module edge, pins
+      centred (±8.89), GND first; spacer holes 20.0 apart, 1.91 from the far
+      edge (74.44 from the header row); back-part height ≤ 2.6
+- [x] find an NV3007 datasheet (`datasheets/display/nv3007-datasheet-v1.0.pdf`)
 - [ ] outline and active area on Dwgs.User for the case window
 
 ### A5. ADC + analog rail
@@ -118,14 +120,22 @@ are placed with their LEDs before the LED power/data section exists.
 - [x] FluidCAD project in `case/`
 - [ ] reference models: keycap, knob, display module, XIAO (STEP imports
       where they exist, simple blocks where they don't)
-  - [x] display module: `case/ref/display-154.part.js` (drawn)
+  - [x] display modules: `case/ref/display-279.part.js` (chosen, D16),
+        `display-154.part.js` (fallback)
   - [x] KS-20: `case/ref/ks20.part.js` (drawn) + Gateron STEP in
         `hardware/libs/3dmodels/`
   - [x] XIAO, PEC11R, EC11E: STEP in `hardware/libs/3dmodels/` (see
         SOURCES.md; orientations differ, check before use)
   - [ ] keycap, knob
 - [ ] board STEP from KiCad imported; re-import after every placed group
-- [ ] plate: switch cutouts, encoder holes, display window
+- [x] layout sketch: `case/layout.js` + `h8e10.assembly.js` (D18);
+      dimensions view `h8e10-dims.assembly.js`
+- [x] top (sketch): switch cutouts, encoder holes, display window,
+      stepped heights with fillet (`case/plate.part.js`)
+- [ ] test coupon: switch cutouts 13.9 / 14.0 / 14.1, bushing holes
+      7.3 / 7.4 / 7.5, a 3.5 fillet step
+- [ ] stiffer switch plate: thicker with 1.5 mm clip pockets
+- [ ] translucent parts (LED diffusers, knob skirts), PETG, dual toolhead
 - [ ] tray: USB-C opening, BOOT/RESET access, antenna spot, standoffs,
       bottom clearance for the XIAO
 - [ ] stack-up check: keycap top, knob top and display glass heights
@@ -144,7 +154,7 @@ Before the board exists (bare XIAO on USB):
 Needs the board (doubles as bring-up, in this order):
 
 - [ ] C5. LEDs (confirms 5 V rail and level shifter)
-- [ ] C6. display
+- [ ] C6. display (NV3007: Arduino_GFX `Arduino_NV3007` or an esp_lcd component)
 - [ ] C7. expanders + encoders: Gray-code decode, push, acceleration
 - [ ] C8. ADC + sensors: raw dump, per-key calibration
 - [ ] C9. key engine: actuation, velocity, aftertouch, rapid trigger
@@ -160,7 +170,7 @@ Needs the board (doubles as bring-up, in this order):
 - [ ] parts per bom.md, with spares of the small stuff, incl. 3–4
       DRV5055A4 as clip spares
 - [ ] interactive BOM (iBom) for the person soldering
-- [ ] assembly: bottom SMD → XIAO → encoders and display socket on top
+- [ ] assembly: bottom SMD → XIAO → encoders and display (spacers, header) on top
 - [ ] power rails checked before first USB plug-in to a computer
 - [ ] bring-up = C5…C8
 - [ ] rev-1 notes

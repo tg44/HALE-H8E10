@@ -1,7 +1,7 @@
 # HALE H8E10
 
 Open-hardware USB-MIDI pad controller: 8 hall-effect keys, 10 push
-encoders, 1.54" display, 20 RGB LEDs, Seeed XIAO ESP32S3 Plus. Pre-hardware:
+encoders, 2.79" bar display, 20 RGB LEDs, Seeed XIAO ESP32S3 Plus. Pre-hardware:
 nothing ordered, no KiCad project yet, no firmware yet.
 
 ## How to work here
@@ -30,7 +30,7 @@ AI-generated, and the README says so publicly.
 - Hall/magnetic switches only (Gateron KS-20 + DRV5055A3, D15). No mechanical or
   hot-swap switches anywhere.
 - All soldered parts on the bottom, including the XIAO. Top: switches,
-  encoders, display socket only.
+  encoders (bolted to the case top, D17), display (header soldered, D16) only.
 - v0 is fully hand-soldered by a professional. No fab assembly, no
   pick-and-place constraints.
 - No bench test. The v0 board is the test.
@@ -56,7 +56,7 @@ AI-generated, and the README says so publicly.
   design; keep them in sync with each other when one changes.
 - Datasheets live in `hardware/libs/datasheets/<group>/` (adc, display,
   encoder, hall, io-expander, led, mcu, power, switch); notes about one
-  part sit next to them (e.g. `display/display.md`). 3D models are in
+  part sit next to them (e.g. `display/1.54/display.md`, `display/candidates.md`). 3D models are in
   `hardware/libs/3dmodels/`, sources in its `SOURCES.md`.
 - Tick the checkboxes in `docs/plan.md` as steps are done.
 

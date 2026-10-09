@@ -8,7 +8,7 @@
 - Bottom (B.Cu): everything that is soldered flat — sensors, LEDs, ICs,
   passives **and the XIAO**. All SMD work happens on one side.
 - Top (F.Cu): only what the user touches — hall switches, encoders,
-  display socket.
+  the display (header soldered in, D16).
 - v0 is hand-soldered (D10). No pick-and-place constraints, but keep it
   friendly to an iron: see "Hand assembly" below.
 
@@ -48,6 +48,9 @@ designator.
 - 1 nF on A and B, on B.Cu next to the pins
 - one reverse-mount LED + 100 nF; where it shines (beside the shaft, under
   a translucent knob skirt) is decided with the knob model
+- Bolted to the case top with its M7 nut (D17): the top rests on the 6.5 mm
+  body, so nothing on the top side may stand taller than the body inside
+  the encoder area
 
 ## Magnetics
 
@@ -99,7 +102,19 @@ designator.
 
 ## Display
 
-- 8-pin socket on top; four M2 holes at 27 × 38.7 mm; see `hardware/libs/datasheets/display/display.md`.
+- 2.79" NV3007 bar (D16), landscape, header end on the left. Its male
+  header is soldered straight into this board — no socket.
+- Footprint: 8 × Ø1.0 holes, 2.54 pitch, the row 1.65 from the module's
+  header-end edge; 2 × M2 holes under the module's Ø2.5 holes (20.0 apart,
+  1.91 from the far edge) — 78.0 − 1.65 − 1.91 = 74.44 from the header row
+  to the hole line. Drawing: `hardware/libs/datasheets/display/2.79/`.
+- The module back carries parts up to ~2.6 (regulator, FPC socket), taller
+  than the 2.5 header body: it sits on 3.0 mm M2 spacers. Nothing on our
+  top side under the module (there is nothing on top anyway).
+- Header pin 2 (VDD) on the **5 V** net, with 10 µF + 100 nF at the header
+  (D16): keeps the backlight's ~100 mA PWM steps local and off the 3.3 V
+  rail. All other header pins are 3.3 V logic straight to the ESP32.
+- Board position comes from `case/layout.js` (D18).
 
 ## Hand assembly
 
@@ -115,8 +130,8 @@ designator.
 - A 180° SOT-23 or LED is the classic first-board bug; the sensor and LED
   orientation get a second look before soldering.
 - Order of work: bottom ICs and passives → LEDs and sensors → XIAO →
-  encoders and display socket from the top. Switches go in last, with the
-  plate.
+  encoders and the display (on its spacers, header soldered) from the top.
+  Switches go in last, with the top.
 - Test points for 5V, 3V3, 3V3A, GND, both SPIs, I2C and LED_DATA.
 - Keep the `LCSC` field on every symbol: it makes the parts order a
   copy-paste, and keeps a fab-assembled rev possible later.

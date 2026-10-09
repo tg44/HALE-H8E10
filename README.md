@@ -17,7 +17,7 @@ key, and an Ableton/DJ mode flip for the knobs."
   per-key velocity, aftertouch and rapid-trigger style actuation
 - 10 detented push-encoders in two rows; a row reads `[browse][hi][mid][lo][mix]`
   in "DJ" mode and ten macro knobs in "Ableton" mode
-- 1.54" 240×240 IPS display (ST7789, SPI)
+- 2.79" 428×142 bar display (NV3007, SPI) in a strip above the keys
 - 20 reverse-mount RGB LEDs (SK6812MINI-EA) (one per switch + one per encoder + 2 status TBD)
 - Seeed XIAO ESP32S3 Plus: class-compliant USB-MIDI, BLE-MIDI, Wi-Fi web UI
 - Powered from the XIAO's USB-C; no external supply
@@ -68,8 +68,11 @@ case/           plate, case and knob models (FluidCAD)
   reasoning behind them
 - [docs/bom.md](docs/bom.md) — bill of materials with LCSC numbers and sources
 - [docs/pinout.md](docs/pinout.md) — MCU pin budget and bus assignments
+- [docs/layout-references.md](docs/layout-references.md) — key/knob spacing
+  and 3D-print thickness references behind `case/layout.js`
 - [docs/pcb-notes.md](docs/pcb-notes.md) — layout and assembly rules
-- [display.md](hardware/libs/datasheets/display/display.md) — the 1.54" ST7789 module, mechanical
+- [display candidates](hardware/libs/datasheets/display/candidates.md) — the 2.79" bar (chosen, D16) vs. the
+  1.54" ([display.md](hardware/libs/datasheets/display/1.54/display.md)) and others, mechanical
 
 ## License
 
