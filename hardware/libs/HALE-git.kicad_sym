@@ -1,0 +1,793 @@
+(kicad_symbol_lib
+	(version 20250925)
+	(generator "pcbjam")
+	(generator_version "1.0")
+	(symbol "Display_2.79_NV3007_Module"(exclude_from_sim no)(in_bom yes)(on_board yes)(in_pos_files yes)(duplicate_pin_numbers_are_jumpers no)(property  "Reference" "DS" (at -2.286 0 0)(show_name no)(do_not_autoplace no)(effects(font(size 1.27 1.27))))(property  "Value" "" (at 0 0 0)(show_name no)(do_not_autoplace no)(effects(font(size 1.27 1.27))))(property  "Footprint" "" (at 0 0 0)(show_name no)(do_not_autoplace no)(hide yes)(effects(font(size 1.27 1.27))))(property  "Datasheet" "" (at 0 0 0)(show_name no)(do_not_autoplace no)(hide yes)(effects(font(size 1.27 1.27))))(property  "Description" "2.79\" 428×142 NV3007 SPI TFT bar module, 8-pin, VDD 3–5 V (TZT 2.79TFT-SPI)" (at 0 0 0)(show_name no)(do_not_autoplace no)(hide yes)(effects(font(size 1.27 1.27))))(symbol "Display_2.79_NV3007_Module_0_1"(rectangle  (start 0 7.62) (end 8.89 -7.62)(stroke (width 0) (type default))(fill (type none))))(symbol "Display_2.79_NV3007_Module_1_1"(pin power_in line (at 2.54 -10.16 90) (length 2.54)(name "GND" (effects (font (size 1.27 1.27))))(number "1" (effects (font (size 1.27 1.27)))))(pin power_in line (at 2.54 10.16 270) (length 2.54)(name "VDD" (effects (font (size 1.27 1.27))))(number "2" (effects (font (size 1.27 1.27)))))(pin input line (at 11.43 6.35 180) (length 2.54)(name "SCL" (effects (font (size 1.27 1.27))))(number "3" (effects (font (size 1.27 1.27)))))(pin input line (at 11.43 3.81 180) (length 2.54)(name "SDA" (effects (font (size 1.27 1.27))))(number "4" (effects (font (size 1.27 1.27)))))(pin input line (at 11.43 1.27 180) (length 2.54)(name "RES" (effects (font (size 1.27 1.27))))(number "5" (effects (font (size 1.27 1.27)))))(pin input line (at 11.43 -1.27 180) (length 2.54)(name "DC" (effects (font (size 1.27 1.27))))(number "6" (effects (font (size 1.27 1.27)))))(pin input line (at 11.43 -3.81 180) (length 2.54)(name "CS" (effects (font (size 1.27 1.27))))(number "7" (effects (font (size 1.27 1.27)))))(pin input line (at 11.43 -6.35 180) (length 2.54)(name "BL" (effects (font (size 1.27 1.27))))(number "8" (effects (font (size 1.27 1.27))))))(embedded_fonts no))
+	(symbol "Gateron_KS-20"(exclude_from_sim no)(in_bom yes)(on_board yes)(in_pos_files yes)(duplicate_pin_numbers_are_jumpers no)(property  "Reference" "K" (at 0 0 0)(show_name no)(do_not_autoplace no)(effects(font(size 1.27 1.27))))(property  "Value" "" (at 0 0 0)(show_name no)(do_not_autoplace no)(effects(font(size 1.27 1.27))))(property  "Footprint" "" (at 0 0 0)(show_name no)(do_not_autoplace no)(hide yes)(effects(font(size 1.27 1.27))))(property  "Datasheet" "" (at 0 0 0)(show_name no)(do_not_autoplace no)(hide yes)(effects(font(size 1.27 1.27))))(property  "Description" "Gateron KS-20 magnetic switch, plate-mounted, not soldered" (at 0 0 0)(show_name no)(do_not_autoplace no)(hide yes)(effects(font(size 1.27 1.27))))(symbol "Gateron_KS-20_0_1"(rectangle  (start -1.27 1.27) (end 1.27 -1.27)(stroke (width 0) (type default))(fill (type none))))(embedded_fonts no))
+	(symbol "XIAO-ESP32-S3 Plus-SMD"		
+				(exclude_from_sim no)		
+				(in_bom yes)		
+				(on_board yes)		
+		(duplicate_pin_numbers_are_jumpers no)		
+				(property "Reference" "U"		
+					(at -20.32 23.622 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(effects		
+						(font		
+							(size 1.27 1.0795)		
+						)		
+					)		
+				)		
+				(property "Value" "XIAO-ESP32-S3-Plus-SMD"		
+					(at -10.16 21.844 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(effects		
+						(font		
+							(size 1.27 1.0795)		
+						)		
+					)		
+				)		
+				(property "Footprint" "Seeed_Studio_XIAO_Series:XIAO-ESP32-S3-Plus-SMD"		
+					(at 3.302 -12.192 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "Datasheet" ""		
+					(at 0 0 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "Description" ""		
+					(at -8.636 -10.16 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "Manufacturer" ""		
+					(at 0 0 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "MPN" ""		
+					(at 0 0 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "SKU" ""		
+					(at -8.636 -8.128 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "Part Type" ""		
+					(at 0 0 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "Rating" ""		
+					(at 0 0 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "Status" ""		
+					(at 0 0 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "Temperature" ""		
+					(at 0 0 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "Priority" ""		
+					(at 0 0 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1 1)		
+						)		
+					)		
+				)		
+				(property "ki_fp_filters" "Module:MOUDLE23P-XIAO-HALF-HOLE"		
+					(at 0 0 0)		
+					(show_name no)		
+					(do_not_autoplace no)		
+					(hide yes)		
+					(effects		
+						(font		
+							(size 1.27 1.27)		
+						)		
+					)		
+				)		
+				(symbol "XIAO-ESP32-S3 Plus-SMD_0_1"		
+					(rectangle		
+						(start -21.59 20.32)		
+						(end 20.32 -31.75)		
+						(stroke		
+							(width 0)		
+							(type default)		
+						)		
+						(fill		
+							(type none)		
+						)		
+					)		
+				)		
+				(symbol "XIAO-ESP32-S3 Plus-SMD_1_0"		
+					(pin passive line		
+						(at -24.13 13.97 0)		
+						(length 2.54)		
+						(name "D0"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "1"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -24.13 10.16 0)		
+						(length 2.54)		
+						(name "D1"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "2"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -24.13 6.35 0)		
+						(length 2.54)		
+						(name "D2"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "3"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -24.13 2.54 0)		
+						(length 2.54)		
+						(name "D3"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "4"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -24.13 -1.27 0)		
+						(length 2.54)		
+						(name "D4"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "5"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -24.13 -5.08 0)		
+						(length 2.54)		
+						(name "D5"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "6"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -24.13 -8.89 0)		
+						(length 2.54)		
+						(name "D6"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "7"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 -8.89 180)		
+						(length 2.54)		
+						(name "D7"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "8"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 -5.08 180)		
+						(length 2.54)		
+						(name "D8"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "9"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 -1.27 180)		
+						(length 2.54)		
+						(name "D9"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "10"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 2.54 180)		
+						(length 2.54)		
+						(name "D10"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "11"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 6.35 180)		
+						(length 2.54)		
+						(name "3V3_OUT"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "12"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 10.16 180)		
+						(length 2.54)		
+						(name "GND"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "13"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 13.97 180)		
+						(length 2.54)		
+						(name "VBUS"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "14"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+				)		
+				(symbol "XIAO-ESP32-S3 Plus-SMD_1_1"		
+					(pin passive line		
+						(at -24.13 -13.97 0)		
+						(length 2.54)		
+						(name "D11"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "15"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -24.13 -17.78 0)		
+						(length 2.54)		
+						(name "D12"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "16"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -24.13 -21.59 0)		
+						(length 2.54)		
+						(name "D13"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "17"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -24.13 -25.4 0)		
+						(length 2.54)		
+						(name "D14"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "18"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 -29.21 180)		
+						(length 2.54)		
+						(name "D15"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "19"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 -25.4 180)		
+						(length 2.54)		
+						(name "D16"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "20"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 -21.59 180)		
+						(length 2.54)		
+						(name "D19"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "21"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 -17.78 180)		
+						(length 2.54)		
+						(name "D18"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "22"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 22.86 -13.97 180)		
+						(length 2.54)		
+						(name "D17"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "23"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -13.97 22.86 270)		
+						(length 2.54)		
+						(name "D14/MTDI"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "24"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -10.16 22.86 270)		
+						(length 2.54)		
+						(name "D13/MTDO"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "25"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -6.35 22.86 270)		
+						(length 2.54)		
+						(name "EN"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "26"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -2.54 22.86 270)		
+						(length 2.54)		
+						(name "GND"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "27"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 1.27 22.86 270)		
+						(length 2.54)		
+						(name "D15/MTMS"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "28"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 5.08 22.86 270)		
+						(length 2.54)		
+						(name "D12/MTCK"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "29"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 8.89 22.86 270)		
+						(length 2.54)		
+						(name "USB_DN"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "30"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 12.7 22.86 270)		
+						(length 2.54)		
+						(name "USB_DP"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "31"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -5.08 -34.29 90)		
+						(length 2.54)		
+						(name "VBAT"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "32"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at -1.27 -34.29 90)		
+						(length 2.54)		
+						(name "GND"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "33"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+					(pin passive line		
+						(at 2.54 -34.29 90)		
+						(length 2.54)		
+						(name "PAD"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+						(number "34"		
+							(effects		
+								(font		
+									(size 1.27 1.27)		
+								)		
+							)		
+						)		
+					)		
+				)		
+		)
+)
