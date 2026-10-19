@@ -242,3 +242,122 @@ reasoning and sources: docs/layout-references.md.
   2.0 walls and floor (PLA/PETG, 0.4 nozzle).
 - The case must fit the owner's printer bed, 256 × 235 (4 mm spare for a
   skirt); layout.js refuses to build a bigger one. Now 222.0 × 82.7.
+
+## D19. Sensor RC filter at the ADC, as resistor arrays
+
+The 1 kΩ of each sensor's RC filter moves from the key cell to the ADC,
+next to its 100 nF (replaces pcb-notes' "1 kΩ series near the sensor").
+
+- The filter acts where the signal is sampled, and the long trace from
+  the key is driven by the sensor's low-impedance output instead of being
+  a 1 kΩ node, so it picks up less LED/I2C noise.
+- With all eight resistors in one place they fit two 4-resistor arrays
+  (Uni-Royal 4D03WGJ0102T5E, LCSC C20197, convex 0603×4: 3.2 × 1.6, 0.8
+  pitch — datasheet in `datasheets/adc/`). An array can't sit next to
+  sensors 19 mm apart, so this only works at the ADC.
+- Cost: the sensor output now sees the trace capacitance (a few pF) with
+  no resistor. TI warns against a *capacitor* directly on the output
+  (§7.1.3); the datasheet gives no maximum load, so a few pF being fine is
+  judgement, not a TI figure.
+
+## D20. MCP23017 bit 7 is output-only: two encoder pushes go to the XIAO
+
+Since datasheet revision D (2022), GPA7 and GPB7 of the MCP23017 are
+output-only (the I2C part only; the SPI MCP23S17 keeps them). Two
+expanders give 28 inputs, not 32, and the encoders need 30.
+
+- Two push switches go straight to XIAO GPIOs (16 of 20 used, 4 spare).
+  No extra parts. ENC1, top left, is the settings button, and the owner
+  wants it on the MCU directly, so it is always one of the two.
+- Rejected: MCP23S17 (moves the expanders onto the ADC's SPI bus) and a
+  third MCP23017 (another SSOP-28 to hand-solder for two pins).
+- The exact expander pin per encoder is left for layout, under the rules
+  in pinout.md (A/B of one encoder on one port, bit 7 unused).
+- The bit-7 pins remain usable as outputs; RST_LCD could move there if
+  XIAO pins ever run short.
+
+## D21. Settled at the schematic review (2026-10-15)
+
+- **Digital 3.3 V comes from the XIAO.** The expanders, I2C and CS
+  pull-ups run on the XIAO's 3V3_OUT (`+3.3V`), the same rail as the
+  ESP32's I/O. Our LDO feeds only the analog rail (`+3.3VA`: sensors,
+  MCP3208) through the ferrite. The two regulators are never tied
+  together. The digital load is a few mA on top of the ESP32.
+- **Hall footprint: KiCad's stock SOT-23**, not a hand-drawn TI DBZ
+  pattern. Its pads span 0.2–1.675 mm from the centre, which holds the
+  DRV5055, the A4 spare and the wider SS39ET alike (pcb-notes).
+- **Pin assignment** as in pinout.md; the second MCU encoder push is
+  ENC6 (front row, left), next to ENC1.
+- **LED chain**: one serpentine run, keys → encoders; the last DOUT is the
+  chain end. (The 2 status LEDs drawn here were dropped, D22.)
+
+## D22. No status LEDs: 18 LEDs, ENC1 first in the chain
+
+The two status LEDs (README's "2 status TBD") are dropped. The 2.79"
+display shows status and connection; the 18 key and encoder LEDs are all
+firmware-mapped and can show anything else.
+
+- The one case the display can't cover — before it's initialised, or if
+  it's dead — goes to **ENC1's LED** (the settings encoder): boot state,
+  fault blink codes, recovery / Wi-Fi AP. Firmware rule: status wins
+  before the display is up and on errors; otherwise it is a normal
+  encoder LED.
+- That only works if ENC1's LED is **first in the chain**: data can't get
+  past a dead LED, so everything after one goes dark. The chain order is
+  still open (plan A7); it now starts at ENC1.
+- Considered: keeping the two as unfitted footprints at the chain's end
+  (a free later option) and a lit "8" in a printed logo. Dropped for
+  simplicity; there are plenty of LEDs.
+- Fewer parts: 2 LEDs and 2 × 100 nF less, and ~70 mA less worst-case
+  current.
+
+## D23. 5 V split into switched rails; CS pull-ups follow the rails
+
+The single `+5V` net is split behind two TI TPS22810 load switches
+(2026-10-19):
+
+- `+5V_AUX` (U1003, EN_AUX on GPIO4): the display and the ME6211 that
+  makes `+3.3VA` (sensors, MCP3208). `+5V_LED` (U1004, EN_LED on GPIO42):
+  the 18 LEDs and the 74AHCT1G125. `+5V` itself (VBUS) feeds only the two
+  switches.
+- Why: everything stays off while the ESP32 boots and enumerates, the
+  LEDs can't flash garbage from a floating LED_DATA during reset (EN has a
+  10 kΩ pull-down, so a reset drops the rail), and the firmware can
+  power-cycle the display and the analog side.
+- CT = 100 nF: ~9 ms soft start, ~20 mA inrush into the LED rail's 42 µF.
+  That replaces D11/pcb-notes' 220 µF bulk electrolytic (4 × 10 µF stay).
+  QOD tied to VOUT discharges a rail quickly when it's switched off.
+- Pull-ups now sit on the rail of the chip they protect: ADC_CS to
+  `+3.3VA` (R2001); LCD_CS has none. A pull-up to the always-on `+3.3V`
+  would feed an unpowered chip through its CS pin.
+- Cost: two GPIOs. Only GPIO3 (strapping) and GPIO43 (UART0 TX) are left
+  free, and ADC_CS moved to GPIO44 (UART0 RX), so the debug console is
+  TX-only.
+- Firmware rules that come with it (pcb-notes, 5 V rails): switch a rail
+  on and wait ≥ 10 ms before driving its chips' pins; make those pins
+  inputs before switching off; cap LED brightness for a 500 mA port.
+- Considered: EN_AUX on an RC to `+5V` (always on, soft start only) to
+  save a GPIO. Kept the GPIO for now; it's the first thing to give back if
+  a pin is needed.
+
+## D24. Mounting holes: screws around the key block, pins elsewhere
+
+12 holes on a grid (positions in pcb-notes, "Mounting holes"), 7 screws
+and 5 pins (2026-10-19).
+
+- The KS-20s are clipped into the plate but not soldered, so nothing else
+  holds the left half of the board against the top. The key block gets
+  screws on all four sides (two on the keys/display step wall, the step
+  wall corner and its front end, the front-left corner). Their bosses are
+  3.5 mm, the gap the switch housing fills, so the screws set the
+  magnet-to-sensor distance.
+- The encoder half is already clamped by the ten M7 nuts (D17): two
+  screws hold the tray, the rest are pins.
+- Pins where a boss doesn't fit: H1002 (2.3 mm to the switch courtyards)
+  and H1012 under the display, where the top can't reach the board. The
+  latter is a tray pin that supports the XIAO/USB-C corner.
+- Grid: rows 65.2 / 95.8 / 134.8 (edge rows 4.04 mm in, symmetric about
+  the board centre), columns on the key-block centre ± 16.5, the step
+  wall and the encoder gaps, so the case model can use the same numbers.
+  Corner holes sit at least 2.7 mm from the R5 corner arc.
+

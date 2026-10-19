@@ -27,52 +27,59 @@ are placed with their LEDs before the LED power/data section exists.
 
 ### A0. Project setup
 
-- [ ] KiCad project `hardware/kicad/h8e10`, project-local lib tables
-- [ ] board setup: 2-layer, 1.6 mm, fab's design rules
-- [ ] rough outline and origin; key grid 19.05 mm
+- [x] KiCad project `hardware/kicad/HALE-H8E10.kicad_pro` (made in pcbjam; libs pinned in `pcbjam.lock.json`, own parts in `libs/HALE-git.*`)
+- [ ] project-local lib tables / `${KIPRJMOD}` model paths so desktop KiCad opens it too
+- [x] board setup: 2-layer, 1.6 mm, fab's design rules (JLCPCB `.kicad_dru`)
+- [x] rough outline and origin; key grid 19.05 mm (217 × 77.68, R5 corners)
 - [ ] STEP export working (`kicad-cli pcb export step`)
 
 ### A1. XIAO ESP32S3 Plus
 
-- [ ] symbol with all 20 GPIO, footprint with the half-pitch castellations,
+- [x] symbol with all 20 GPIO, footprint with the half-pitch castellations,
       3D model
-- [ ] **double-check the XIAO footprint** against Seeed's
+- [x] **double-check the XIAO footprint** against Seeed's
       `datasheets/mcu/seeed-xiao-esp32s3-plus-bottom.dxf` and the pinout sheet
       (`…-pinout.xlsx`): castellation pitch, half-pitch pads, pin 1
-      orientation when flipped to the bottom
-- [ ] placed on the **bottom**, USB-C at a board edge
-- [ ] power labels: 5V, 3V3 (XIAO), GND
+      orientation when flipped to the bottom (2026-10-19: pads overlaid on
+      the DXF, D0 top-left / 5V top-right after the flip)
+- [x] placed on the **bottom**, USB-C at a board edge (back edge, ~1.5 mm overhang)
+- [x] power labels: 5V, 3V3 (XIAO), GND
 
 ### A2. Key cell ×8
 
-- [ ] KS-20 footprint + 3D model
-- [ ] **double-check the KS-20 footprint** against the Gateron drawing
+- [x] KS-20 footprint + 3D model
+- [x] **double-check the KS-20 footprint** against the Gateron drawing
       (`hardware/libs/datasheets/switch/gateron-ks-20-…pdf` p.5, "Layout of
       PCB"): two Ø1.70 mm peg holes at ±5.08 mm, **no Ø4 mm centre
       hole** (that's where the sensor goes), no electrical pads
-- [ ] peg clearance on B.Cu: pegs stick out ~1.1 mm below a 1.6 mm board;
+- [x] peg clearance on B.Cu: pegs stick out ~1.1 mm below a 1.6 mm board;
       nothing soldered on top of them, case floor clear
-- [ ] DRV5055A3 (SOT-23) + 100 nF + 1 kΩ, sensor position from a reference
+- [x] DRV5055A3 (SOT-23) + 100 nF (the 1 kΩ moved to A5, D19), sensor position from a reference
       design (D12, D15)
-- [ ] **double-check the sensor footprint** against both datasheets: TI
+- [x] **double-check the sensor footprint** (superseded by D21: stock SOT-23; pinout checked 2026-10-19) against both datasheets: TI
       DBZ land pattern (DRV5055 p.30) and SS39ET fig. 4 — feet of both
       parts must land on the pads; pin 1 VCC, 2 OUT, 3 GND; package
       centre on the switch axis (pcb-notes, per-key cell)
-- [ ] SK6812MINI-E(A) + 100 nF, cutout at the LED window
-- [ ] one cell grouped, checked, then copied ×8 in 2×4
+- [x] SK6812MINI-E(A) + 100 nF, cutout at the LED window
+- [x] one cell grouped, checked, then copied ×8 in 2×4
 
 ### A3. Encoder cell ×10
 
-- [ ] PEC11R-4215F-S0024 footprint (check against the Bourns drawing) + 3D model, knob model
-- [ ] 2 × 1 nF on A/B
-- [ ] LED + 100 nF; position decided with the knob/case model
-- [ ] one cell grouped, then copied ×10 in two rows of five
+- [x] PEC11R-4215F-S0024 footprint (check against the Bourns drawing) + 3D model; knob model still open;
+      lug slots ≥ 2.6 × 1.8 at 11.4 centres (pcb-notes)
+- [x] **double-check the encoder pad numbers against the schematic symbol**
+      (`RotaryEncoder_Switch_MP`: A, B, C, S1, S2, MP): the easyeda2kicad
+      footprint numbers pads its own way, and a mismatch swaps A/C or wires
+      the push switch into the quadrature lines
+- [x] 2 × 1 nF on A/B
+- [x] LED + 100 nF, 10.5 mm from the shaft; the case needs a light pipe there (pcb-notes)
+- [x] one cell grouped, then copied ×10 in two rows of five
 
 ### A4. Display
 
-- [ ] 2.79" bar (D16): 8 × Ø1.0 header holes + 2 × M2 spacer holes,
+- [x] 2.79" bar (D16): 8 × Ø1.0 header holes + 2 × M2 spacer holes,
       module 3D model (`case/ref/display-279.part.js`)
-- [ ] **double-check the header and spacer positions together** against
+- [x] **double-check the header and spacer positions together** against
       the drawing (`hardware/libs/datasheets/display/2.79/`) and a real
       module with calipers: header row 1.65 from the module edge, pins
       centred (±8.89), GND first; spacer holes 20.0 apart, 1.91 from the far
@@ -82,36 +89,42 @@ are placed with their LEDs before the LED power/data section exists.
 
 ### A5. ADC + analog rail
 
-- [ ] MCP3208, VREF on the filtered rail, 1 µF at VREF
-- [ ] **double-check the MCP3208 footprint** (SOIC-16) and pin 1 against
+- [x] MCP3208, VREF on the filtered rail, 1 µF at VREF
+- [x] **double-check the MCP3208 footprint** (SOIC-16) and pin 1 against
       `datasheets/adc/microchip-mcp3208.pdf`
-- [ ] ferrite + 10 µF + 100 nF → `3V3A`
-- [ ] 100 nF at each ADC input (other half of the sensor RC)
-- [ ] sensor nets from A2 connected
+- [x] ferrite + 10 µF + 100 nF → `3V3A`
+- [x] sensor RC at the ADC (D19): 2 × 1 kΩ 4-resistor arrays (`R_Pack04`,
+      `R_Array_Convex_4x0603`) + 100 nF at each ADC input
+- [x] **double-check the array pairing**: symbol resistor n is pins n ↔ 9−n;
+      the footprint and the 4D03 datasheet must pair the same pads
+- [x] sensor nets from A2 connected
 
 ### A6. Expanders
 
-- [ ] 2 × MCP23017, 0x20/0x21, I2C pull-ups, INT wired-OR
-- [ ] 30 encoder lines from A3 connected, 2 pins spare
+- [x] 2 × MCP23017, 0x20/0x21, I2C pull-ups, INT wired-OR
+- [x] 28 encoder lines from A3 on bits 0–6 (GPA7/GPB7 are output-only, D20), ENC1_SW + one more push to the XIAO; pinout.md rules
 
 ### A7. LED chain
 
-- [ ] 74AHCT1G125, 220 Ω series, bulk cap on 5 V
-- [ ] chain order chosen for short data hops; 2 status LEDs placed
+- [x] 74AHCT1G125, 220 Ω series; bulk = 4 × 10 µF on `+5V_LED` behind a soft-start switch (D23)
+- [x] chain order chosen for short data hops, **ENC1's LED first** (D22)
 
 ### A8. Power
 
-- [ ] 3.3 V LDO from the XIAO 5V pin, in/out caps
-- [ ] test points: 5V, 3V3, 3V3A, GND, both SPIs, I2C, LED_DATA
+- [x] 3.3 V LDO from the XIAO 5V pin, CE to VIN, in/out caps (output cap before the ferrite, pcb-notes)
+- [x] 5 V split into `+5V_AUX` / `+5V_LED` with TPS22810 switches (D23)
+- [x] test points: 5V, 5V_AUX, 5V_LED, 3V3, 3V3A, GND (no signal test points; pcb-notes)
 
 ### A9. Finish
 
-- [ ] final pin assignment on the XIAO, written back to pinout.md
-- [ ] ERC clean
-- [ ] route; ground pour both sides; stitching around the sensor cluster
-- [ ] mounting holes agreed with the case
-- [ ] silkscreen on the bottom: designators, pin 1, LED and cap polarity
-- [ ] DRC clean against the fab's 2-layer rules
+- [x] final pin assignment on the XIAO, written back to pinout.md (movable pins listed there)
+- [x] ERC clean (0 errors, 2026-10-15)
+- [x] route; ground pour both sides (stitching around the sensor cluster: check)
+- [x] mounting holes on the board, 12 on a grid (pcb-notes, D24)
+- [ ] case: insert bosses (3.5 mm in the key area) and tray pins at those holes
+- [x] silkscreen: designators hidden (iBoM instead), pin 1 and LED marks, test-point labels, `Logo H8E10` mark (HALE-git) top and bottom, `${REVISION}` set in the title block
+- [x] LCSC fields: fix C1004/C1005/C2016 (C15849), add the missing ones from bom.md, then Update PCB from Schematic
+- [x] DRC clean against the fab's 2-layer rules (2026-10-19, before the holes)
 - [ ] full-assembly check in 3D with case, knobs and keycaps
 - [ ] someone else looks at it before ordering (see README, feedback)
 

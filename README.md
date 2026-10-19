@@ -18,7 +18,7 @@ key, and an Ableton/DJ mode flip for the knobs."
 - 10 detented push-encoders in two rows; a row reads `[browse][hi][mid][lo][mix]`
   in "DJ" mode and ten macro knobs in "Ableton" mode
 - 2.79" 428×142 bar display (NV3007, SPI) in a strip above the keys
-- 20 reverse-mount RGB LEDs (SK6812MINI-EA) (one per switch + one per encoder + 2 status TBD)
+- 18 reverse-mount RGB LEDs (SK6812MINI-EA), one per key and one per encoder; no separate status LEDs (the display and ENC1's LED cover status)
 - Seeed XIAO ESP32S3 Plus: class-compliant USB-MIDI, BLE-MIDI, Wi-Fi web UI
 - Powered from the XIAO's USB-C; no external supply
 

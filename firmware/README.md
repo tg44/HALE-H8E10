@@ -12,8 +12,9 @@ Modules to write:
 - `input/` — MCP23017 interrupt read, Gray-code encoder decode, acceleration,
   push with rotation-lockout
 - `midi/` — USB-MIDI + BLE-MIDI; relative CC for encoders
-- `ui/` — ST7789 (LovyanGFX), dim-after-idle, blank-after-minutes
-- `leds/` — SK6812 chain via RMT
+- `ui/` — NV3007 2.79" bar (D16: Arduino_GFX `Arduino_NV3007` or an esp_lcd
+  component; not in LovyanGFX), dim-after-idle, blank-after-minutes
+- `leds/` — SK6812 chain via RMT, 18 LEDs, ENC1's first (index 0)
 - `settings/` — settings model, NVS storage, on-device settings mode
 - `web/` — Wi-Fi config, MIDI map editor, calibration view
 
@@ -41,6 +42,10 @@ encoders.
 - **One thing to know**: the long-press. Everything after that is shown by
   the LEDs and the display; there are no hidden pages or chords.
 - **Saved on exit** to NVS; the web UI edits the same settings model.
+- **Status light**: there are no separate status LEDs (D22). ENC1's LED,
+  first in the chain, shows status until the display is up (boot, faults
+  as blink codes, recovery / Wi-Fi AP) and on errors; otherwise it behaves
+  like every other encoder LED. The display shows connection details.
 - **Recovery**: holding that encoder while plugging in boots with defaults
   and Wi-Fi AP on, without touching stored settings until confirmed.
 - **Flashing**: with TinyUSB owning the USB port there is no automatic
@@ -48,5 +53,6 @@ encoders.
   the system page (BOOT on the XIAO stays reachable through the tray as the
   fallback).
 
-The two spare expander pins leave room for a dedicated tact switch if the
-long-press turns out to be awkward.
+If the long-press turns out to be awkward, a dedicated tact switch can go on
+one of the spare XIAO GPIOs (pinout.md). The expanders have no spare inputs
+left: their bit-7 pins are output-only (D20).
