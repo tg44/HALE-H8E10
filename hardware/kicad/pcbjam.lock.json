@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-15T13:26:57.426Z",
+  "generatedAt": "2026-10-19T07:21:14.692Z",
   "projectId": "e367f224-56cb-4671-a530-47c06e82acd8",
   "libs": [
     {
@@ -52,6 +52,22 @@
       }
     },
     {
+      "nickname": "Connector",
+      "kinds": [
+        "symbol"
+      ],
+      "bundled": false,
+      "license": "cc-by-sa-4.0",
+      "libId": "302dbbf7-a2d3-41e9-9402-e0ff4f67d1c5",
+      "type": "origin",
+      "revision": "sha256:8160c2a80026e07af9bede64fbc023359e5344ef39271c4ee3c1479b403d2ea2",
+      "source": {
+        "provenance": "kicad-symbols",
+        "repoUrl": "https://gitlab.com/kicad/libraries/kicad-symbols",
+        "ref": "kicad-symbols@60d2dc9981920ee40eb5caa4dc01b23f713beca7"
+      }
+    },
+    {
       "nickname": "Device",
       "kinds": [
         "symbol"
@@ -77,7 +93,23 @@
       "license": null,
       "libId": "7e0e54e9-633b-4cf3-a047-f8b6924378c6",
       "type": "team",
-      "revision": "sha256:eee0220e91c8abd16fba91c88906bfab41865f39424b274983048235c380d94f"
+      "revision": "sha256:54cfdc58dfae370b0de3fb975092270bdc6c710d78752ceb72fe0937fb069550"
+    },
+    {
+      "nickname": "Inductor_SMD",
+      "kinds": [
+        "footprint"
+      ],
+      "bundled": false,
+      "license": "cc-by-sa-4.0",
+      "libId": "583b2481-7c0a-47f6-9e4c-0bd04436bda2",
+      "type": "origin",
+      "revision": "sha256:f643421ddb4944f6015c7b6df9ad18311d10fb6c8306ce0a4eac19792fc015d2",
+      "source": {
+        "provenance": "kicad-footprints",
+        "repoUrl": "https://gitlab.com/kicad/libraries/kicad-footprints",
+        "ref": "kicad-footprints@2c7f07017725b44b98f30849e1b83e29fed43718"
+      }
     },
     {
       "nickname": "Interface_Expansion",
@@ -121,22 +153,6 @@
       "libId": "c8f53031-320d-4f4c-b88e-d4c08d1233d9",
       "type": "origin",
       "revision": "sha256:e677fe37a4894eb39dfc85b4143c2a24e285dcee9e79f14ff3f401f1974f9572",
-      "source": {
-        "provenance": "kicad-footprints",
-        "repoUrl": "https://gitlab.com/kicad/libraries/kicad-footprints",
-        "ref": "kicad-footprints@2c7f07017725b44b98f30849e1b83e29fed43718"
-      }
-    },
-    {
-      "nickname": "Package_DFN_QFN",
-      "kinds": [
-        "footprint"
-      ],
-      "bundled": false,
-      "license": "cc-by-sa-4.0",
-      "libId": "d56cbd78-259c-4351-8bf4-ffd056647b2d",
-      "type": "origin",
-      "revision": "sha256:1ac46d55c34095b76b825c9dee3d871d2593b8e59a063bf94d63cf0bb08daab9",
       "source": {
         "provenance": "kicad-footprints",
         "repoUrl": "https://gitlab.com/kicad/libraries/kicad-footprints",
@@ -208,22 +224,6 @@
       }
     },
     {
-      "nickname": "Resistor_THT",
-      "kinds": [
-        "footprint"
-      ],
-      "bundled": false,
-      "license": "cc-by-sa-4.0",
-      "libId": "9bc8aafe-67b7-4fc5-af2b-74a2cf68343b",
-      "type": "origin",
-      "revision": "sha256:707a2983c8ffae57b8fa5367cc45540d09af670c669507018f0b9c9231c1a3dd",
-      "source": {
-        "provenance": "kicad-footprints",
-        "repoUrl": "https://gitlab.com/kicad/libraries/kicad-footprints",
-        "ref": "kicad-footprints@2c7f07017725b44b98f30849e1b83e29fed43718"
-      }
-    },
-    {
       "nickname": "Sensor_Magnetic",
       "kinds": [
         "symbol"
@@ -237,6 +237,22 @@
         "provenance": "kicad-symbols",
         "repoUrl": "https://gitlab.com/kicad/libraries/kicad-symbols",
         "ref": "kicad-symbols@60d2dc9981920ee40eb5caa4dc01b23f713beca7"
+      }
+    },
+    {
+      "nickname": "TestPoint",
+      "kinds": [
+        "footprint"
+      ],
+      "bundled": false,
+      "license": "cc-by-sa-4.0",
+      "libId": "9156b161-042e-4c8c-8301-fdb3069cddf6",
+      "type": "origin",
+      "revision": "sha256:4dc0941a46a605e8a5bfb0836a771b80abfab8c0562ab63da5a4a71790c3e431",
+      "source": {
+        "provenance": "kicad-footprints",
+        "repoUrl": "https://gitlab.com/kicad/libraries/kicad-footprints",
+        "ref": "kicad-footprints@2c7f07017725b44b98f30849e1b83e29fed43718"
       }
     },
     {
