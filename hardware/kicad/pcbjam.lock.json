@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-19T07:21:14.692Z",
+  "generatedAt": "2026-10-19T17:29:24.978Z",
   "projectId": "e367f224-56cb-4671-a530-47c06e82acd8",
   "libs": [
     {
@@ -93,7 +93,7 @@
       "license": null,
       "libId": "7e0e54e9-633b-4cf3-a047-f8b6924378c6",
       "type": "team",
-      "revision": "sha256:54cfdc58dfae370b0de3fb975092270bdc6c710d78752ceb72fe0937fb069550"
+      "revision": "sha256:2e133bbf16d1cb632cbb1c368a3543254f8d22031b230507526886046e3551f4"
     },
     {
       "nickname": "Inductor_SMD",
@@ -160,6 +160,38 @@
       }
     },
     {
+      "nickname": "Mechanical",
+      "kinds": [
+        "symbol"
+      ],
+      "bundled": false,
+      "license": "cc-by-sa-4.0",
+      "libId": "e627ce85-8452-46ce-96af-0d52aefb9639",
+      "type": "origin",
+      "revision": "sha256:86b9922841093fd73d79377e3bd6df0912702186313a202345c92619a47bec22",
+      "source": {
+        "provenance": "kicad-symbols",
+        "repoUrl": "https://gitlab.com/kicad/libraries/kicad-symbols",
+        "ref": "kicad-symbols@60d2dc9981920ee40eb5caa4dc01b23f713beca7"
+      }
+    },
+    {
+      "nickname": "MountingHole",
+      "kinds": [
+        "footprint"
+      ],
+      "bundled": false,
+      "license": "cc-by-sa-4.0",
+      "libId": "31fea8f2-a93b-4fab-af04-bbd40bbb712d",
+      "type": "origin",
+      "revision": "sha256:75bab96ba168785f836f3ff998b3ee15375242955279ec6404853daac64aa1f4",
+      "source": {
+        "provenance": "kicad-footprints",
+        "repoUrl": "https://gitlab.com/kicad/libraries/kicad-footprints",
+        "ref": "kicad-footprints@2c7f07017725b44b98f30849e1b83e29fed43718"
+      }
+    },
+    {
       "nickname": "Package_SO",
       "kinds": [
         "footprint"
@@ -189,6 +221,22 @@
         "provenance": "kicad-footprints",
         "repoUrl": "https://gitlab.com/kicad/libraries/kicad-footprints",
         "ref": "kicad-footprints@2c7f07017725b44b98f30849e1b83e29fed43718"
+      }
+    },
+    {
+      "nickname": "Power_Management",
+      "kinds": [
+        "symbol"
+      ],
+      "bundled": false,
+      "license": "cc-by-sa-4.0",
+      "libId": "2334e75f-6033-4e05-82cf-61fcadaadbf3",
+      "type": "origin",
+      "revision": "sha256:706c06b1f243d03bdca30ed758bf38a5b5a5a8c4b68bf92f3f2c7008a3ec8e46",
+      "source": {
+        "provenance": "kicad-symbols",
+        "repoUrl": "https://gitlab.com/kicad/libraries/kicad-symbols",
+        "ref": "kicad-symbols@60d2dc9981920ee40eb5caa4dc01b23f713beca7"
       }
     },
     {

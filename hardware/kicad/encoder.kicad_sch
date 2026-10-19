@@ -992,6 +992,145 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:+5VL"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "+5VL"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+5VL\""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "+5VL_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+5VL_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:GND"
 			(power global)
 			(pin_numbers
@@ -1441,7 +1580,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C5378731"
 			(at 115.57 118.11 0)
 			(hide yes)
 			(show_name no)
@@ -1618,119 +1757,6 @@
 				)
 				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/f8b05a19-a7ce-4f92-9338-66786138864b"
 					(reference "#PWR032004")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 115.57 101.6 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "ff554314-fd14-4675-a9f3-9db05e1e0959")
-		(property "Reference" "#PWR031003"
-			(at 115.57 105.41 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 115.57 97.282 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 115.57 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 115.57 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 115.57 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "6bcc84c8-a992-480e-b188-f75651511928")
-		)
-		(instances
-			(project "HALE-H8E10"
-				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/190c6ed3-1a42-4715-a32a-8245a11d6fd1"
-					(reference "#PWR033003")
-					(unit 1)
-				)
-				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/22f422a4-276f-47e2-a2d4-53108e4c201e"
-					(reference "#PWR037003")
-					(unit 1)
-				)
-				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/2eb38094-c0b7-44ab-8831-a6192a8b5132"
-					(reference "#PWR039003")
-					(unit 1)
-				)
-				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/3252edd8-2663-4144-b5ee-180a3f4925ce"
-					(reference "#PWR040003")
-					(unit 1)
-				)
-				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/8694b622-cffc-443d-a943-b6c742454971"
-					(reference "#PWR031003")
-					(unit 1)
-				)
-				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/8f1bd5c9-3013-4628-860e-e677149ba41e"
-					(reference "#PWR036003")
-					(unit 1)
-				)
-				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/b9112ac5-0e11-40d8-9e01-6e2240b65ee2"
-					(reference "#PWR038003")
-					(unit 1)
-				)
-				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/bc963598-3dd1-4e5d-a6bc-ecbbb83733e7"
-					(reference "#PWR035003")
-					(unit 1)
-				)
-				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/e910f79a-11f3-4611-8566-8e965d7b9a8e"
-					(reference "#PWR034003")
-					(unit 1)
-				)
-				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/f8b05a19-a7ce-4f92-9338-66786138864b"
-					(reference "#PWR032003")
 					(unit 1)
 				)
 			)
@@ -2678,5 +2704,119 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ea45102f-a94b-4158-9fd2-f73c4c03a274")
+	)
+	(symbol
+		(lib_id "power:+5VL")
+		(at 115.57 101.6 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "15e3cd7e-4fec-4b77-9439-4ab3a7b82a7e")
+		(property "Reference" "#PWR031003"
+			(at 115.57 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+5V_LED"
+			(at 115.57 96.52 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 115.57 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5VL\""
+			(at 115.57 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "48291e99-8a9a-47e8-aa10-69645ee16225")
+		)
+		(instances
+			(project "HALE-H8E10"
+				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/190c6ed3-1a42-4715-a32a-8245a11d6fd1"
+					(reference "#PWR033003")
+					(unit 1)
+				)
+				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/22f422a4-276f-47e2-a2d4-53108e4c201e"
+					(reference "#PWR037003")
+					(unit 1)
+				)
+				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/2eb38094-c0b7-44ab-8831-a6192a8b5132"
+					(reference "#PWR039003")
+					(unit 1)
+				)
+				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/3252edd8-2663-4144-b5ee-180a3f4925ce"
+					(reference "#PWR040003")
+					(unit 1)
+				)
+				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/8694b622-cffc-443d-a943-b6c742454971"
+					(reference "#PWR031003")
+					(unit 1)
+				)
+				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/8f1bd5c9-3013-4628-860e-e677149ba41e"
+					(reference "#PWR036003")
+					(unit 1)
+				)
+				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/b9112ac5-0e11-40d8-9e01-6e2240b65ee2"
+					(reference "#PWR038003")
+					(unit 1)
+				)
+				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/bc963598-3dd1-4e5d-a6bc-ecbbb83733e7"
+					(reference "#PWR035003")
+					(unit 1)
+				)
+				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/e910f79a-11f3-4611-8566-8e965d7b9a8e"
+					(reference "#PWR034003")
+					(unit 1)
+				)
+				(path "/95d89127-9479-4179-8532-6fc4e4c352d8/b92ca440-41fc-4f69-ab39-b4c036ee6d57/f8b05a19-a7ce-4f92-9338-66786138864b"
+					(reference "#PWR032003")
+					(unit 1)
+				)
+			)
+		)
 	)
 )
