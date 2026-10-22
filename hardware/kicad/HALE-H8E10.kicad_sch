@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "HALE-H8E10")
-		(date "2026-10-12")
-		(rev "A")
+		(date "${RELEASE_DATE}")
+		(rev "${REV}")
 		(comment 1 "JLCPCB Standard rules, 2 layers")
 	)
 	(lib_symbols
