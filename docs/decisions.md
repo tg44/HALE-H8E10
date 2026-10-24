@@ -361,3 +361,23 @@ and 5 pins (2026-10-19).
   wall and the encoder gaps, so the case model can use the same numbers.
   Corner holes sit at least 2.7 mm from the R5 corner arc.
 
+## D25. Firmware: PlatformIO + pioarduino, Arduino framework; USB-MIDI last
+
+Settled 2026-10-22, before C0. Replaces "ESP-IDF (or Arduino-ESP32)" in
+firmware/README.md. Details in firmware/docs/.
+
+- C++, not Rust. esp-hal (Rust) is usable on the S3, but there is no
+  NV3007 driver, BLE-MIDI and the web page would be written by hand, and
+  board bring-up should run on known-good library code.
+- PlatformIO for the workflow (already used in luminotaxis), through the
+  pioarduino fork: stock `platform-espressif32` is stuck on Arduino-ESP32
+  2.x. The platform is pinned to a release tag.
+- Arduino framework, because the planned libraries (Arduino_GFX
+  `Arduino_NV3007`, BLE-MIDI, ESPAsyncWebServer) are Arduino libraries.
+  `framework = arduino, espidf` stays open if an IDF setting is needed.
+- TinyUSB takes over the USB port and with it the serial console and
+  auto-reset flashing. So development runs on the `xiao` env
+  (USB-Serial-JTAG), MIDI goes to the log / BLE, and USB-MIDI is switched
+  on last (`xiao-usbmidi`, C13), after OTA works. A short C1 spike checks
+  the mode switch and recovery early. A one-boot "reboot without MIDI"
+  menu item is planned (unverified until C1).

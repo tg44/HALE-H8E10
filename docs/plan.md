@@ -126,6 +126,7 @@ are placed with their LEDs before the LED power/data section exists.
 - [x] LCSC fields: fix C1004/C1005/C2016 (C15849), add the missing ones from bom.md, then Update PCB from Schematic
 - [x] DRC clean against the fab's 2-layer rules (2026-10-19, before the holes)
 - [ ] full-assembly check in 3D with case, knobs and keycaps
+- [ ] decide: a test pad on GPIO43 (UART0 TX) for logs once USB carries MIDI (firmware/docs/usb.md, system feature)
 - [ ] someone else looks at it before ordering (see README, feedback)
 
 ## Track B — mechanical (parallel to A)
@@ -156,15 +157,23 @@ are placed with their LEDs before the LED power/data section exists.
 
 ## Track C — firmware
 
+Milestones only. The detailed task lists and hardware checks live per
+feature: [firmware/docs/features.md](../firmware/docs/features.md); the
+order of checks on a fresh board: [bringup.md](../firmware/docs/bringup.md).
+
 Before the board exists (bare XIAO on USB):
 
-- [ ] C0. project skeleton, builds and flashes
-- [ ] C1. USB-MIDI device enumerates, sends a test note
+- [ ] C0. project skeleton (pioarduino, envs `native` / `xiao` /
+      `xiao-usbmidi`, firmware/docs/toolchain.md), builds and flashes
+- [ ] C1. USB-MIDI spike: enumerates, sends a test note, back to the
+      bootloader; test "reboot without MIDI" (firmware/docs/usb.md). Then
+      develop on the `xiao` env; MIDI goes to the log / BLE until C13
 - [ ] C2. settings storage (NVS) and the settings data model
 - [ ] C3. BLE-MIDI
-- [ ] C4. Wi-Fi settings page skeleton
+- [ ] C4. Wi-Fi settings page skeleton + OTA update
 
-Needs the board (doubles as bring-up, in this order):
+Needs the board (doubles as bring-up, in this order; C9–C12 logic can
+start earlier in the `native` env):
 
 - [ ] C5. LEDs (confirms 5 V rail and level shifter)
 - [ ] C6. display (NV3007: Arduino_GFX `Arduino_NV3007` or an esp_lcd component)
@@ -172,8 +181,10 @@ Needs the board (doubles as bring-up, in this order):
 - [ ] C8. ADC + sensors: raw dump, per-key calibration
 - [ ] C9. key engine: actuation, velocity, aftertouch, rapid trigger
 - [ ] C10. MIDI mapping: notes, relative CC, DJ / Ableton modes
-- [ ] C11. settings mode on the device (see firmware/README.md)
+- [ ] C11. settings mode on the device (firmware/docs/features/settings/)
 - [ ] C12. web UI: MIDI map editor, calibration view
+- [ ] C13. USB-MIDI on: needs OTA and a log path without the USB console
+      (firmware/docs/usb.md), then switch to the `xiao-usbmidi` env
 
 ## Order and assembly
 

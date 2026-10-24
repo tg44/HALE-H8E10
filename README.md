@@ -56,7 +56,7 @@ or naive, an issue saying so is very welcome.
 docs/           design notes, decisions, BOM, assembly notes
 hardware/kicad/ KiCad 10 project (schematic, PCB)
 hardware/libs/  project-local symbols, footprints, 3D models
-firmware/       ESP-IDF / Arduino firmware for the XIAO ESP32S3
+firmware/       Arduino (PlatformIO) firmware for the XIAO ESP32S3
 case/           plate, case and knob models (FluidCAD)
 ```
 
