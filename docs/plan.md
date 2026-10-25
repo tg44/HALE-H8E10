@@ -174,6 +174,9 @@ are placed with their LEDs before the LED power/data section exists.
 - [ ] board: the H8E10 footprints, same positions as the big board;
       PCB outline, screw/pin holes and tower keep-outs from
       `case/mini/layout.js` (D27)
+- [ ] silkscreen: `Logo H4E2` mark (HALE-git; the board at 1:14 like
+      `Logo H8E10`, drawn from `case/mini/layout.js`) — add it to the
+      HALE-git library in pcbjam, then place it top and bottom
 - [ ] order: Mouser + one LCSC line (SK6812MINI-EA)
 - [ ] test: sensor swing per sensor type, LED cutout, encoder fit
 
