@@ -31,10 +31,10 @@ a fader version `H8E10F4`. **HALE** is the family name (HALl Encoder; also
 
 ## Status
 
-Pre-hardware. Nothing is ordered yet. Parts are being collected (symbol,
-footprint, 3D model) and the schematic, layout and case are built up
-together, one part group at a time. v0 will be a single hand-soldered
-board. See [docs/plan.md](docs/plan.md) for the order of work and
+Nothing is ordered yet. The H8E10 schematic and board are drawn and
+routed; the case is modelled alongside. Before ordering it, a mini test
+board, H4E2 (4 keys, 2 encoders, the same display), checks the footprints
+and the hall-sensor circuit. v0 will be a single hand-soldered board. See [docs/plan.md](docs/plan.md) for the order of work and
 [docs/decisions.md](docs/decisions.md) for why things are the way they are.
 
 ## AI-assisted, not AI-generated
@@ -54,10 +54,11 @@ or naive, an issue saying so is very welcome.
 
 ```
 docs/           design notes, decisions, BOM, assembly notes
-hardware/kicad/ KiCad 10 project (schematic, PCB)
+hardware/H8E10/ KiCad 10 project (schematic, PCB)
+hardware/H4E2/  KiCad 10 project of the mini test board
 hardware/libs/  project-local symbols, footprints, 3D models
 firmware/       Arduino (PlatformIO) firmware for the XIAO ESP32S3
-case/           plate, case and knob models (FluidCAD)
+case/           case and plate models (FluidCAD): lib/, h8e10/, mini/
 ```
 
 ## Docs
@@ -69,7 +70,7 @@ case/           plate, case and knob models (FluidCAD)
 - [docs/bom.md](docs/bom.md) — bill of materials with LCSC numbers and sources
 - [docs/pinout.md](docs/pinout.md) — MCU pin budget and bus assignments
 - [docs/layout-references.md](docs/layout-references.md) — key/knob spacing
-  and 3D-print thickness references behind `case/layout.js`
+  and 3D-print thickness references behind `case/lib/parts.js`
 - [docs/pcb-notes.md](docs/pcb-notes.md) — layout and assembly rules
 - [display candidates](hardware/libs/datasheets/display/candidates.md) — the 2.79" bar (chosen, D16) vs. the
   1.54" ([display.md](hardware/libs/datasheets/display/1.54/display.md)) and others, mechanical

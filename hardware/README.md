@@ -1,8 +1,10 @@
 # Hardware
 
-- `kicad/` — KiCad 10 project `h8e10.kicad_pro`
-- `libs/` — project-local symbols (`h8e10.kicad_sym`), footprints
-  (`h8e10.pretty/`), 3D models (`3dmodels/`, sources in its SOURCES.md), datasheets
+- `H8E10/` — KiCad 10 project `HALE-H8E10.kicad_pro`, the full board
+- `H4E2/` — KiCad 10 project `H4E2.kicad_pro`, the mini test board (D26);
+  started as a copy of the H8E10 project
+- `libs/` — project-local symbols (`HALE-git.kicad_sym`), footprints
+  (`HALE-git.pretty/`), 3D models (`3dmodels/`, sources in its SOURCES.md), datasheets
   (`datasheets/<group>/`: adc, display, encoder, hall, io-expander, led,
   mcu, power, switch). Every
   part used on the board gets all of them here, so the project opens

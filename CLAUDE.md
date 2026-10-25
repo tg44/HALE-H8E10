@@ -2,7 +2,10 @@
 
 Open-hardware USB-MIDI pad controller: 8 hall-effect keys, 10 push
 encoders, 2.79" bar display, 18 RGB LEDs, Seeed XIAO ESP32S3 Plus. Board
-routed, nothing ordered yet; firmware not started.
+routed, nothing ordered yet; firmware not started. Before v0, a mini test
+board H4E2 (4 keys, 2 encoders, the same display; D26) is built first:
+KiCad project `hardware/H4E2/` (started as a copy of `hardware/H8E10/`),
+case in `case/mini/`.
 
 ## How to work here
 
@@ -33,7 +36,10 @@ AI-generated, and the README says so publicly.
   encoders (bolted to the case top, D17), display (header soldered, D16) only.
 - v0 is fully hand-soldered by a professional. No fab assembly, no
   pick-and-place constraints.
-- No bench test. The v0 board is the test.
+- No breadboard bench tests; the H4E2 mini board (D26) is the one test
+  before v0.
+- The case top prints bottom-up (top layer last): nothing may hang below
+  its underside (3.5 mm above the PCB) — no bosses, no baffles (D27).
 - 1.6 mm 2-layer board (D14), no steel near the sensors.
 
 ## Workflow
@@ -68,7 +74,11 @@ AI-generated, and the README says so publicly.
   `/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli`
   (ERC/DRC: `sch erc`, `pcb drc`; board model: `pcb export step`).
 - FluidCAD in `case/` (`*.part.js`, `*.assembly.js`; `npx fluidcad serve`,
-  `npx fluidcad export step|stl|png`). It has an MCP server:
+  `npx fluidcad export step|stl|png`). Shared sizes and builders in
+  `case/lib/`, the boards in `case/h8e10/` and `case/mini/`. While a
+  `fluidcad serve` runs, `export` exports the file open in that viewer, not
+  `-e`; `export png` also lags one file behind. Export from a copy of
+  `case/` (`-w`) or with the viewer closed. It has an MCP server:
   `claude mcp add --scope user FluidCAD -- npx -y fluidcad mcp`.
 - Project-local libraries only (`hardware/libs/`); LCSC parts via
   `easyeda2kicad`.

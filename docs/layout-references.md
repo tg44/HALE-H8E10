@@ -1,6 +1,6 @@
 # Layout references: key, knob and case dimensions
 
-Where the spacing and print-thickness numbers in `case/layout.js` come
+Where the spacing and print-thickness numbers in `case/lib/parts.js` come
 from. Researched 2026-10-09 (web only, no units measured). Each value is
 marked by how much it can be trusted:
 
@@ -51,7 +51,7 @@ measuring its knob spacing beats everything below.
 
 ## Project defaults (ours — iterate from here)
 
-| Item | Value | In `case/layout.js` |
+| Item | Value | In `case/lib/parts.js` (or a board's `layout.js`) |
 |---|---|---|
 | Key pitch | 19.05 | `U` |
 | Encoder pitch along a row | 27 (Intech ~26.75); 30 also fits the bed (case ~234 long) | `ENC_PX` |
@@ -61,13 +61,13 @@ measuring its knob spacing beats everything below.
 | Case walls, floor | 2.0 (5 lines), 2.0 | `WALL`, `FLOOR` |
 | Encoder panel | 2.0 (≤ 2.5: washer 0.5 + nut 2.0 on the 5 mm thread) | `SEG.encoders` |
 | Switch plate | 1.5 (KS-20); a thicker plate with 1.5 clip pockets is the next iteration | `SEG.keys` |
-| M7 bushing hole | Ø7.4 | `plate.part.js` |
-| Print bed | 256 × 235, 4 mm spare for skirt/brim; case now 222.0 × 82.7 | `BED` (layout.js throws if exceeded) |
+| M7 bushing hole | Ø7.4 | `lib/plate.js` |
+| Print bed | 256 × 235, 4 mm spare for skirt/brim; H8E10 case 222.0 × 82.7, mini 91–114 × 82.7 | `BED` (`lib/layout-core.js` throws if exceeded) |
 | Display bezel (2.79" strip) | 1.8: 0.3 above the glass (glass at 6.4 on 3.0 spacers), top flush with the encoders at 8.5 | `SEG.display` |
 | Step around the key area | 3.5 high (5.0 → 8.5), fillet 3.499 | `STEP_EDGE` |
 | Flat strip, fillet → screen window | 5.3 | `WINDOW_LAND` |
 | Screen window | active area + 0.5 per side | `WINDOW_PAD` |
-| Edge symmetry | window → back edge = front keycap → front edge (7.0) | rule in `layout.js` |
+| Edge symmetry | window → back edge = front keycap → front edge (7.0) | rule in `lib/layout-core.js` |
 | Diffusers (later, LEDs) | 0.6–1.0 translucent PETG, 2–3 mm air gap to the LED | — |
 
 To check with real parts: print a test coupon with 13.9 / 14.0 / 14.1

@@ -96,7 +96,7 @@ EN via RC and BL tied high. Possible only because the display module has CS (the
 
 ## Expander map
 
-Encoder numbers follow `ENCODERS` in `case/layout.js`: ENC1–5 the back
+Encoder numbers follow `ENCODERS` in `case/h8e10/layout.js`: ENC1–5 the back
 row (display row) left to right, ENC6–10 the front row. ENC1, top left,
 is the settings encoder.
 

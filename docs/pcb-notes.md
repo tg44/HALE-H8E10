@@ -57,8 +57,15 @@ designator.
 - 1 nF on A and B, on B.Cu next to the pins
 - one reverse-mount LED + 100 nF, 10.5 mm from the shaft (between the two
   encoder rows), outside the 13.4 mm body and outside a 15 mm knob. It
-  shines up through its cutout into the 6.5 mm cavity under the top: the
-  top needs a light pipe or translucent insert there
+  shines up through its cutout into its own light channel in the top: the
+  encoder area of the top is solid from 3.5 mm above the PCB, with a
+  pocket per encoder body and a 4 × 2 channel per LED, ending in a
+  two-material window (`case/lib/windows.js`: 4 × 2 opening, flange 1 mm
+  wider in the middle layers, bridged over the channel). No LED reaches
+  another's window, also in the mini's stacked pair (6 mm apart). The pin
+  side facing the LED is the switch side (S1/S2 at 7.0); encoder courtyard
+  and LED courtyard are 0.13 mm apart; nothing else may stand on the top
+  side within 3.5 mm of the PCB in the encoder area
 - Bolted to the case top with its M7 nut (D17): the top rests on the 6.5 mm
   body, so nothing on the top side may stand taller than the body inside
   the encoder area
@@ -190,7 +197,7 @@ designator.
 - Pin 1 (GND) is at the key-side end of the header (checked against the
   TZT drawing): the image is rotated 180° from the drawing, a firmware
   setting.
-- Board position comes from `case/layout.js` (D18).
+- Board position comes from `case/h8e10/layout.js` (D18).
 
 ## Mounting holes (D24)
 

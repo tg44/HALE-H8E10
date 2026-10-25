@@ -381,3 +381,70 @@ firmware/README.md. Details in firmware/docs/.
   on last (`xiao-usbmidi`, C13), after OTA works. A short C1 spike checks
   the mode switch and recovery early. A one-boot "reboot without MIDI"
   menu item is planned (unverified until C1).
+
+## D26. Mini test board (H4E2) before v0; amends D12
+
+Settled 2026-10-24. D12 ("no bench test, v0 is the test") no longer holds
+in full: a small board is built first.
+
+- What it tests: the footprints (KS-20 pegs with the SOT-23 sensor
+  under it, the SK6812MINI-EA reverse-mount cutout, PEC11R, MCP3208
+  SOIC-16, the resistor array), the hall circuit with the D19 RC filter
+  at the ADC, the LDO + ferrite analog rail, encoders and the display.
+  Four keys leave room to put the DRV5055A3, the A4 spare and the SS39ET
+  side by side under the same switch.
+- Not tested: the TPS22810 load switches (no EU distributor stock on
+  2026-10-22).
+- Layout: the H8E10's left 2×2 keys and the 2.79" display at the same
+  positions relative to each other, plus 1–4 encoders. Same part sizes and
+  spacing rules as the big board. Picked: `h4e2-stack`, two encoders
+  stacked in the free key slot (27 apart, case 91.0 × 82.7, no wider
+  than the display needs). The key well's wall leaves the same gap right
+  of the keys as the case edge does left of them (7.9), and the column is
+  centred on the flat top between the step slope and the case edge (9.8
+  each side). Accepted cost: the back knob is 4.9 mm in
+  front of the screen window and hides its lower-right corner unless
+  viewed from steeply above; the encoder positions differ from the
+  H8E10's, so the mini doesn't check the big board's encoder/step-wall
+  fit. The other candidates stay in `case/mini/` (`VARIANTS`).
+- Sourcing: as few LCSC line types as possible. Since 2026-07-01 a
+  parcel under €150 from outside the EU pays €3 duty per tariff line, so
+  loose passives from LCSC cost more in duty than in parts. Mouser has
+  everything but the LEDs and the TPS22810; the LED comes from LCSC
+  because the footprint test needs the real part.
+- The case files were reorganised for it: shared sizes and builders in
+  `case/lib/`, the full board in `case/h8e10/` (D18's `case/layout.js` is
+  now `case/h8e10/layout.js`, spacing numbers in `case/lib/parts.js`),
+  the mini in `case/mini/`. Its KiCad project is `hardware/H4E2/`.
+
+## D27. Mini assembly: screws on the right, nothing on the left
+
+Settled 2026-10-25, for the mini (D26). Replaces D24's bosses there; the
+H8E10 keeps D24 for now.
+
+- D24's 3.5 mm bosses hang below the top's underside. The top is printed
+  bottom-up (top layer last, for the finish), so they would be the first
+  layer and leave the switch plate in the air. The same holds for the
+  H8E10's key-area bosses (H1001, H1003–H1006): that needs rethinking
+  before v0.
+- Left side: no room for inserts (the switch plate is 1.5 mm, the screen
+  strip is hollow over the glass) and no screws near the sensors. The top
+  just rests on the tray walls there, as everywhere: the screws and nuts
+  already fix it in x, y and z, and key presses push down onto the walls.
+  An L-shaped tray wall without a lip was tried and dropped: it held
+  nothing the plain wall doesn't. Known weak spot: pulling a keycap lifts
+  the front-left of the switch plate (about 70 mm from the nearest
+  fixing); hold the board down. A hooked left wall can follow if that is
+  a problem in practice.
+- Right side: two M2 screws from under the tray into heat-set inserts in
+  the top's solid encoder area (front corner, and in front of the screen
+  glass), plus the two encoder nuts. Brass or nylon screws.
+- The PCB is not screwed: tray towers hold it from below (centre of the
+  key block, front-left corner, the screw columns), two of them with a
+  pin through a PCB hole under the screen to locate it. Its bottom side
+  needs Ø6 keep-out spots there.
+- Assembly, all straight down: tray, PCB on its towers, top (on the tray
+  walls, encoder bushings through their holes), keys clipped in, encoder
+  nuts, screws from below.
+- Insert hole Ø3.2 × 4 is a typical value, not from the insert's
+  datasheet.

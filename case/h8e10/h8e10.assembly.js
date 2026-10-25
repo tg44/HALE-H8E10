@@ -7,16 +7,18 @@ import { KEYS, ENCODERS, DISPLAY_POS, DISPLAY_Z, DISPLAY_ROT, KEYCAP_Z, SEG } fr
 import { board } from './board.part.js';
 import { plate } from './plate.part.js';
 import { tray } from './tray.part.js';
-import { ks20 } from './ref/ks20.part.js';
-import { pec11r } from './ref/pec11r.part.js';
-import { m7hardware } from './ref/m7-hardware.part.js';
-import { display279 } from './ref/display-279.part.js';
-import { keycap, knob } from './ref/placeholders.part.js';
+import { windows } from './windows.part.js';
+import { ks20 } from '../ref/ks20.part.js';
+import { pec11r } from '../ref/pec11r.part.js';
+import { m7hardware } from '../ref/m7-hardware.part.js';
+import { display279 } from '../ref/display-279.part.js';
+import { keycap, knob } from '../ref/placeholders.part.js';
 
 export const h8e10 = assembly('H8E10 layout sketch', () => {
   insert(board).grounded().name('PCB');
   insert(tray).name('Tray');
   insert(plate).name('Top');
+  insert(windows).name('LED windows');
 
   insert(display279).rotate('z', DISPLAY_ROT).translate(DISPLAY_POS[0], DISPLAY_POS[1], DISPLAY_Z).name('Display');
 

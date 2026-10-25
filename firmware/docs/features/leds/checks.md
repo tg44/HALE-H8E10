@@ -8,4 +8,4 @@ Run order: [bringup.md](../../bringup.md). Needs SYS-M8.
 | LED-M2 | Chain order | walk index 0 → 17, one at a time | order as pinout.md, LED chain | | | |
 | LED-M3 | Every LED, every colour | all LEDs red, green, blue, white (low brightness) | no dead or swapped colours | | | |
 | LED-M4 | No flash at plug-in or reset | plug in, press RESET, watch | all dark until firmware enables `+5V_LED` (D23) | | | |
-| LED-M5 | Light visible in the case | full case, room light | visible through key windows and encoder cutouts (pcb-notes: encoders need a light pipe or translucent insert) | | | |
+| LED-M5 | Light visible in the case | full case, room light | visible through the key windows and the encoder LED windows; each encoder window shows only its own LED (pcb-notes, per-encoder cell) | | | |

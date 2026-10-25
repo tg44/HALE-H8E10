@@ -1,7 +1,8 @@
 # Build plan
 
-v0 is one hand-soldered board. There is no bench-test phase: the v0 board
-is the test (see D12 in decisions.md). Nothing is ordered yet.
+v0 is one hand-soldered board. Before it, a mini test board (H4E2: 2×2
+keys, the display, 2 encoders) checks the footprints and the hall
+circuit (D26, amends D12). Nothing is ordered yet.
 
 Three tracks run side by side:
 
@@ -27,7 +28,7 @@ are placed with their LEDs before the LED power/data section exists.
 
 ### A0. Project setup
 
-- [x] KiCad project `hardware/kicad/HALE-H8E10.kicad_pro` (made in pcbjam; libs pinned in `pcbjam.lock.json`, own parts in `libs/HALE-git.*`)
+- [x] KiCad project `hardware/H8E10/HALE-H8E10.kicad_pro` (made in pcbjam; libs pinned in `pcbjam.lock.json`, own parts in `libs/HALE-git.*`)
 - [ ] project-local lib tables / `${KIPRJMOD}` model paths so desktop KiCad opens it too
 - [x] board setup: 2-layer, 1.6 mm, fab's design rules (JLCPCB `.kicad_dru`)
 - [x] rough outline and origin; key grid 19.05 mm (217 × 77.68, R5 corners)
@@ -72,7 +73,7 @@ are placed with their LEDs before the LED power/data section exists.
       footprint numbers pads its own way, and a mismatch swaps A/C or wires
       the push switch into the quadrature lines
 - [x] 2 × 1 nF on A/B
-- [x] LED + 100 nF, 10.5 mm from the shaft; the case needs a light pipe there (pcb-notes)
+- [x] LED + 100 nF, 10.5 mm from the shaft; the case has a window over it (pcb-notes)
 - [x] one cell grouped, then copied ×10 in two rows of five
 
 ### A4. Display
@@ -122,6 +123,7 @@ are placed with their LEDs before the LED power/data section exists.
 - [x] route; ground pour both sides (stitching around the sensor cluster: check)
 - [x] mounting holes on the board, 12 on a grid (pcb-notes, D24)
 - [ ] case: insert bosses (3.5 mm in the key area) and tray pins at those holes
+      — the key-area bosses don't print bottom-up (D27); rethink first
 - [x] silkscreen: designators hidden (iBoM instead), pin 1 and LED marks, test-point labels, `Logo H8E10` mark (HALE-git) top and bottom, `${REVISION}` set in the title block
 - [x] LCSC fields: fix C1004/C1005/C2016 (C15849), add the missing ones from bom.md, then Update PCB from Schematic
 - [x] DRC clean against the fab's 2-layer rules (2026-10-19, before the holes)
@@ -142,18 +144,38 @@ are placed with their LEDs before the LED power/data section exists.
         SOURCES.md; orientations differ, check before use)
   - [ ] keycap, knob
 - [ ] board STEP from KiCad imported; re-import after every placed group
-- [x] layout sketch: `case/layout.js` + `h8e10.assembly.js` (D18);
-      dimensions view `h8e10-dims.assembly.js`
+- [x] layout sketch: `case/h8e10/layout.js` + `h8e10.assembly.js` (D18);
+      dimensions view `h8e10-dims.assembly.js`; shared part sizes and
+      builders in `case/lib/`
 - [x] top (sketch): switch cutouts, encoder holes, display window,
-      stepped heights with fillet (`case/plate.part.js`)
+      stepped heights with fillet (`case/lib/plate.js`)
 - [ ] test coupon: switch cutouts 13.9 / 14.0 / 14.1, bushing holes
       7.3 / 7.4 / 7.5, a 3.5 fillet step
 - [ ] stiffer switch plate: thicker with 1.5 mm clip pockets
+- [x] encoder LED windows: black/transparent sandwich, transparent plug
+      as its own body (`case/lib/windows.js`); encoder area of the top
+      solid, with encoder pockets and a light channel per LED
 - [ ] translucent parts (LED diffusers, knob skirts), PETG, dual toolhead
 - [ ] tray: USB-C opening, BOOT/RESET access, antenna spot, standoffs,
       bottom clearance for the XIAO
 - [ ] stack-up check: keycap top, knob top and display glass heights
 - [ ] test print of the plate before the PCB is ordered
+
+## Mini test board (D26)
+
+- [x] case: layouts with 1–4 encoders in `case/mini/` (`variants.assembly.js`)
+- [x] pick the encoder layout: `h4e2-stack` (D26)
+- [x] case: assembly (D27) — top on the tray walls, 2 screws into
+      inserts on the right + the encoder nuts, PCB on tray towers (2
+      locating pins)
+- [x] KiCad project `hardware/H4E2/`, a copy of the H8E10 to cut down
+- [ ] schematic: the hall circuit, MCP3208 + RC filter, LDO + ferrite,
+      LEDs, encoders, display (no TPS22810)
+- [ ] board: the H8E10 footprints, same positions as the big board;
+      PCB outline, screw/pin holes and tower keep-outs from
+      `case/mini/layout.js` (D27)
+- [ ] order: Mouser + one LCSC line (SK6812MINI-EA)
+- [ ] test: sensor swing per sensor type, LED cutout, encoder fit
 
 ## Track C — firmware
 
