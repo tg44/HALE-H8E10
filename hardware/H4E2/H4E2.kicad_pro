@@ -78,10 +78,6 @@
       ],
       "drc_exclusions": [
         [
-          "courtyards_overlap|38109380|67483860|1a7f1263-c439-426f-a03d-7b97804541b3|a8ecf47d-0919-44dd-a43c-c7831d960113",
-          "Hole will be support from bottom only!"
-        ],
-        [
           "npth_inside_courtyard|38500000|69900000|c787001a-466c-4ca9-aad8-b516411af57e|a8ecf47d-0919-44dd-a43c-c7831d960113",
           "Hole will be supported from the bottom only"
         ]
@@ -187,6 +183,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -198,6 +195,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -209,6 +207,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -492,9 +491,10 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
+      "same_local_global_power": "warning",
       "similar_label_and_power": "warning",
       "similar_labels": "warning",
       "similar_power": "warning",
@@ -542,8 +542,8 @@
     "meta": {
       "version": 5
     },
-    "net_colors": null,
-    "netclass_assignments": null,
+    "net_colors": {},
+    "netclass_assignments": {},
     "netclass_patterns": []
   },
   "pcbnew": {
@@ -753,13 +753,13 @@
         "uuid": "95d89127-9479-4179-8532-6fc4e4c352d8"
       }
     ],
-    "used_designators": "SW1-10,SW31001,SW32001,SW33001,SW34001,SW35001,SW36001,SW37001,SW38001,SW39001,SW40001,#FLG1001-1005,#FLG2001,H1001-1012,RN1-2,RN2001-2002,D1-18,D1001-1002,D21001,D22001,D23001,D24001,D25001,D26001,D27001,D28001,D31001,D32001,D33001,D34001,D35001,D36001,D37001,D38001,D39001,D40001,R1-6,R1001-1005,R2001,R3001-3004,#PWR1-124,#PWR1001-1027,#PWR2001-2023,#PWR3001-3012,#PWR21001-21006,#PWR22001-22006,#PWR23001-23006,#PWR24001-24006,#PWR25001-25006,#PWR26001-26006,#PWR27001-27006,#PWR28001-28006,#PWR31001-31005,#PWR32001-32005,#PWR33001-33005,#PWR34001-34005,#PWR35001-35005,#PWR36001-36005,#PWR37001-37005,#PWR38001-38005,#PWR39001-39005,#PWR40001-40005,K1-8,K21001,K22001,K23001,K24001,K25001,K26001,K27001,K28001,C1-53,C1001-1009,C2001-2016,C3001-3002,C21001-21002,C22001-22002,C23001-23002,C24001-24002,C25001-25002,C26001-26002,C27001-27002,C28001-28002,C31001-31003,C32001-32003,C33001-33003,C34001-34003,C35001-35003,C36001-36003,C37001-37003,C38001-38003,C39001-39003,C40001-40003,TP1001-1005,TP2001,U1-10,U1001-1004,U2001-2002,U3001-3002,U21001,U22001,U23001,U24001,U25001,U26001,U27001,U28001,FB1,FB2001,DS1,DS1001,#SYM1001-1002",
+    "used_designators": "#FLG1001-1005,#FLG2001,#PWR1-124,#PWR1001-1027,#PWR2001-2023,#PWR3001-3012,#PWR21001-21006,#PWR22001-22006,#PWR23001-23006,#PWR24001-24006,#PWR25001-25006,#PWR26001-26006,#PWR27001-27006,#PWR28001-28006,#PWR31001-31005,#PWR32001-32005,#PWR33001-33005,#PWR34001-34005,#PWR35001-35005,#PWR36001-36005,#PWR37001-37005,#PWR38001-38005,#PWR39001-39005,#PWR40001-40005,#SYM1001-1002,C1-53,C1001-1009,C2001-2016,C3001-3002,C21001-21002,C22001-22002,C23001-23002,C24001-24002,C25001-25002,C26001-26002,C27001-27002,C28001-28002,C31001-31003,C32001-32003,C33001-33003,C34001-34003,C35001-35003,C36001-36003,C37001-37003,C38001-38003,C39001-39003,C40001-40003,D1-18,D1001-1002,D21001,D22001,D23001,D24001,D25001,D26001,D27001,D28001,D31001,D32001,D33001,D34001,D35001,D36001,D37001,D38001,D39001,D40001,DS1,DS1001,FB1,FB2001,H1001-1012,K1-8,K21001,K22001,K23001,K24001,K25001,K26001,K27001,K28001,R1-6,R1001-1005,R2001-2005,R3001-3004,RN1-2,RN2001-2002,SW1-10,SW31001,SW32001,SW33001,SW34001,SW35001,SW36001,SW37001,SW38001,SW39001,SW40001,TP1001-1005,TP2001,U1-10,U1001-1004,U2001-2002,U3001-3002,U21001,U22001,U23001,U24001,U25001,U26001,U27001,U28001",
     "variants": []
   },
   "sheets": [
     [
       "95d89127-9479-4179-8532-6fc4e4c352d8",
-      "HALE-H8E10"
+      "H4E2"
     ],
     [
       "4b75bd9e-329e-4489-b23d-ebc8bc921298",
@@ -778,14 +778,6 @@
       "key2"
     ],
     [
-      "6bd8124a-9a6a-49a7-a7f6-e58e6c394933",
-      "key3"
-    ],
-    [
-      "2dc657e5-15fd-41e0-b47b-75b61abb9356",
-      "key4"
-    ],
-    [
       "fc6ddc38-42a7-4ac8-a817-625672ab43c2",
       "key5"
     ],
@@ -794,52 +786,12 @@
       "key6"
     ],
     [
-      "888e8f29-2925-45e8-a00f-bfff82b2556a",
-      "key7"
-    ],
-    [
-      "1f925e4c-dce3-4ac5-9354-f83a74aac100",
-      "key8"
-    ],
-    [
       "8694b622-cffc-443d-a943-b6c742454971",
       "encoder1"
     ],
     [
-      "f8b05a19-a7ce-4f92-9338-66786138864b",
-      "encoder2"
-    ],
-    [
-      "190c6ed3-1a42-4715-a32a-8245a11d6fd1",
-      "encoder3"
-    ],
-    [
-      "e910f79a-11f3-4611-8566-8e965d7b9a8e",
-      "encoder4"
-    ],
-    [
-      "bc963598-3dd1-4e5d-a6bc-ecbbb83733e7",
-      "encoder5"
-    ],
-    [
       "8f1bd5c9-3013-4628-860e-e677149ba41e",
       "encoder6"
-    ],
-    [
-      "22f422a4-276f-47e2-a2d4-53108e4c201e",
-      "encoder7"
-    ],
-    [
-      "b9112ac5-0e11-40d8-9e01-6e2240b65ee2",
-      "encoder8"
-    ],
-    [
-      "2eb38094-c0b7-44ab-8831-a6192a8b5132",
-      "encoder9"
-    ],
-    [
-      "3252edd8-2663-4144-b5ee-180a3f4925ce",
-      "encoder10"
     ]
   ],
   "text_variables": {
